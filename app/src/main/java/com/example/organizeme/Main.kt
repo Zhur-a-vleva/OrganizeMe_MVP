@@ -2,9 +2,9 @@ package com.example.organizeme
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class Main : AppCompatActivity() {
 
@@ -17,6 +17,12 @@ class Main : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_container)
+        if (BuildConfig.DEBUG) {
+            setContentView(R.layout.registration_fragment)
+        } else {
+            setContentView(R.layout.fragment_container)
+        }
+
         sharedPreferences = getSharedPreferences("com.example.organizeme", Context.MODE_PRIVATE)
 
         if (sharedPreferences.getBoolean(firstRunKey, true)) {
