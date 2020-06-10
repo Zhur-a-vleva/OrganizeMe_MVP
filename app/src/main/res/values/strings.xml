@@ -1,3 +1,9 @@
 <resources>
-  <string name="app_name">OrganizeMe</string>
+    <string name="app_name">OrganizeMe</string>
+
+    <string name="email_input">Введите свой email</string>
+    <string name="account_exist">У меня уже есть аккаунт</string>
+    <string name="first_hello">Привет! OrganizeMe - это социальная сеть, которая поможет тебе эффективно
+      планировать свои дела. Для того, чтобы продолжить, тебе необходимо зарегистрироваться</string>
+    <string name="next">далее</string>
 </resources>
