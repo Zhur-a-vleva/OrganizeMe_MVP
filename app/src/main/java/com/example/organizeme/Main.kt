@@ -16,7 +16,12 @@ class Main : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_container)
+        if (BuildConfig.DEBUG) {
+            setContentView(R.layout.registration_fragment)
+        }
+        else {
+            setContentView(R.layout.fragment_container)
+        }
 
         sharedPreferences = getSharedPreferences("com.example.organizeme", Context.MODE_PRIVATE)
 
