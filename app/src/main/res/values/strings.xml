@@ -6,4 +6,10 @@
     <string name="first_hello">Привет! OrganizeMe - это социальная сеть, которая поможет тебе эффективно
       планировать свои дела. Для того, чтобы продолжить, тебе необходимо зарегистрироваться</string>
     <string name="next">далее</string>
+
+    <string name="email">Почта</string>
+    <string name="password">Пароль</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="sign_in">ВОЙТИ</string>
+    <string name="sign_up">Зарегистрироваться</string>
 </resources>
