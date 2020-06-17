@@ -24,51 +24,56 @@
 
         <EditText
             android:id="@+id/email_input"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
+            android:fontFamily="@font/source_sans_pro_light"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/small_text_color"
-            android:textSize="@dimen/ordinary_text_size" />
+            android:textColorHint="@color/small_text_color" />
 
         <EditText
             android:id="@+id/password_input"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:textColorHint="@color/small_text_color"
-            android:textSize="@dimen/ordinary_text_size" />
+            android:textColorHint="@color/small_text_color" />
 
         <TextView
             android:id="@+id/forgot_password"
+            style="@android:style/TextAppearance.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:fontFamily="@font/source_sans_pro_light"
             android:text="@string/forgot_password"
             android:textColor="@color/blue_text_color"
-            android:textSize="@dimen/small_text_size"
             tools:ignore="RtlHardcoded" />
 
         <Button
             android:id="@+id/sign_in"
+            style="@android:style/TextAppearance.Large"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_layout_margin"
             android:layout_marginBottom="@dimen/large_layout_margin"
+            android:fontFamily="@font/source_sans_pro_bold"
             android:text="@string/sign_in"
-            android:textColor="@color/white_text_color"
-            android:textSize="@dimen/title_text_size" />
+            android:textColor="@color/white_text_color" />
 
         <TextView
-            android:id="@+id/sign_up"
+            style="@android:style/TextAppearance.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_layout_margin"
+            android:fontFamily="@font/source_sans_pro_light"
             android:text="@string/sign_up"
-            android:textColor="@color/blue_text_color"
-            android:textSize="@dimen/small_text_size" />
+            android:textColor="@color/blue_text_color" />
+
 
     </LinearLayout>
 
