@@ -14,7 +14,7 @@ class Main : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val firstRunKey = "FIRST_RUN_KEY"
     private val registrationActiveKey = "REGISTRATION_ACTIVE_KEY"
-    private val registrationFragment = RegistrationFragment.newInstance(this)
+    private val registrationFragment = RegistrationEmailFragment.newInstance(this)
     private val signInFragment = SignInFragment.newInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class Main : AppCompatActivity() {
             fragmentManager
                 .add(R.id.fragment_container, registrationFragment)
                 .commit()
-            fragmentManager.addToBackStack(RegistrationFragment.name)
+            fragmentManager.addToBackStack(RegistrationEmailFragment.name)
 
             //edit "firstRun" state
             sharedPreferences.edit().putBoolean(firstRunKey, false).apply()
