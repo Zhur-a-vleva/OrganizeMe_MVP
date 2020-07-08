@@ -23,40 +23,41 @@
 
         <TextView
             android:id="@+id/first_hello"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
+            android:fontFamily="@font/source_sans_pro_light"
             android:text="@string/first_hello"
-            android:textColor="@color/ordinary_text_color"
-            android:textSize="@dimen/ordinary_text_size" />
+            android:textColor="@color/grey_dark" />
 
         <EditText
             android:id="@+id/email_input"
+            style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
+            android:fontFamily="@font/source_sans_pro_light"
             android:hint="@string/email_input"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/small_text_color"
-            android:textSize="@dimen/ordinary_text_size" />
+            android:textColorHint="@color/grey_light" />
 
         <TextView
             android:id="@+id/account_exist"
+            style="@android:style/TextAppearance.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_light"
             android:text="@string/account_exist"
-            android:textColor="@color/small_text_color"
-            android:textSize="@dimen/small_text_size" />
+            android:textColor="@color/grey_light" />
 
     </LinearLayout>
 
-    <TextView
+    <ImageView
         android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/next"
-        android:textColor="@color/blue_text_color"
-        android:textSize="@dimen/ordinary_text_size"
+        android:src="@drawable/arrow_right"
         app:layout_constraintBottom_toBottomOf="@id/registration"
         app:layout_constraintRight_toRightOf="@id/registration" />
 
