@@ -6,16 +6,16 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
-class RegistrationFragment : Fragment(R.layout.registration_email_fragment) {
+class RegistrationEmailFragment : Fragment(R.layout.registration_email_fragment) {
 
     companion object {
 
         const val name = "RegistrationFragment"
         private lateinit var context: Context
 
-        fun newInstance(cont: Context): RegistrationFragment {
+        fun newInstance(cont: Context): RegistrationEmailFragment {
             context = cont
-            return RegistrationFragment()
+            return RegistrationEmailFragment()
         }
     }
 
