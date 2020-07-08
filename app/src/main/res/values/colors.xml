@@ -5,4 +5,8 @@
   <color name="grey_light">#868587</color>
   <color name="grey_dark">#262829</color>
   <color name="black">#000000</color>
+
+  <color name="colorPrimary"></color>
+  <color name="colorPrimaryDark"></color>
+  <color name="colorAccent"></color>
 </resources>
