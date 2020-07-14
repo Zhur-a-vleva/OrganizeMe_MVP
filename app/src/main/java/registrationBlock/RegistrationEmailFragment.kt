@@ -1,4 +1,4 @@
-package ui
+package registrationBlock
 
 import android.content.Context
 import android.os.Bundle

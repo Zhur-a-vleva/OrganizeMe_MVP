@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">OrganizeMe</string>
 
-    <string name="email_input">Введите свой email</string>
+    <string name="email_input">Введите свою почту</string>
     <string name="account_exist"><u>У меня уже есть аккаунт</u></string>
     <string name="first_hello">Привет! OrganizeMe - это социальная сеть, которая поможет тебе эффективно
       планировать свои дела. Для того, чтобы продолжить, тебе необходимо зарегистрироваться</string>
@@ -11,4 +11,10 @@
     <string name="forgot_password"><u>Забыли пароль?</u></string>
     <string name="sign_in">ВОЙТИ</string>
     <string name="sign_up">Зарегистрироваться</string>
+
+    <string name="error_title"><u>Ошибка</u></string>
+    <string name="email_is_not_registered">Такая почта не зарегистрирована. Повторите попытку еще раз</string>
+    <string name="password_is_not_correct">Неверный пароль. Повторите попытку еще раз</string>
+    <string name="write_your_email">Введите свою почту</string>
+    <string name="send_password">Отправить пароль</string>
 </resources>

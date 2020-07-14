@@ -52,7 +52,7 @@
             android:fontFamily="@font/source_sans_pro_light"
             android:text="@string/forgot_password"
             android:textColor="@color/blue"
-            tools:ignore="RtlHardcoded" />
+            />
 
         <Button
             android:id="@+id/sign_in"
@@ -64,6 +64,7 @@
             style="@style/BlueButtonStyle" />
 
         <TextView
+            android:id="@+id/sign_up"
             style="@android:style/TextAppearance.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

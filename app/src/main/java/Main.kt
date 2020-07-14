@@ -1,5 +1,4 @@
-package ui
-
+import signInBlock.SignInFragment
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -7,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.organizeme.BuildConfig
 import com.example.organizeme.R
+import registrationBlock.RegistrationEmailFragment
 
 class Main : AppCompatActivity() {
 
@@ -14,7 +14,8 @@ class Main : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val firstRunKey = "FIRST_RUN_KEY"
     private val registrationActiveKey = "REGISTRATION_ACTIVE_KEY"
-    private val registrationFragment = RegistrationEmailFragment.newInstance(this)
+    private val registrationFragment =
+        RegistrationEmailFragment.newInstance(this)
     private val signInFragment = SignInFragment.newInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,8 +61,7 @@ class Main : AppCompatActivity() {
     override fun onBackPressed() {
         if (sharedPreferences.getBoolean(registrationActiveKey, true)) {
             fragmentManager.remove(registrationFragment)
-        }
-        else {
+        } else {
             fragmentManager.remove(signInFragment)
         }
         super.onBackPressed()
