@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sign_in_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/grey_light" />
@@ -37,8 +36,9 @@
             android:id="@+id/password_input"
             style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
+            android:longClickable="false"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColorHint="@color/grey_light" />
@@ -49,19 +49,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:text="@string/forgot_password"
-            android:textColor="@color/blue"
-            />
+            android:textColor="@color/blue" />
 
         <Button
             android:id="@+id/sign_in"
+            style="@style/BlueButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_layout_margin"
             android:layout_marginBottom="@dimen/large_layout_margin"
-            android:text="@string/sign_in"
-            style="@style/BlueButtonStyle" />
+            android:text="@string/sign_in" />
 
         <TextView
             android:id="@+id/sign_up"
@@ -69,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_layout_margin"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:text="@string/sign_up"
             android:textColor="@color/blue" />
 

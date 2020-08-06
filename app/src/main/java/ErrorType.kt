@@ -1,4 +1,0 @@
-enum class ErrorType {
-    EMAIL_IS_NOT_REGISTERED,
-    PASSWORD_IS_NOT_CORRECT
-}

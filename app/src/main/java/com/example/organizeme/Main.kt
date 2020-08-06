@@ -1,12 +1,12 @@
-import signInBlock.SignInFragment
+package com.example.organizeme
+
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.organizeme.BuildConfig
-import com.example.organizeme.R
-import registrationBlock.RegistrationEmailFragment
+import com.example.organizeme.registrationBlock.RegistrationEmailFragment
+import com.example.organizeme.signInBlock.SignInFragment
 
 class Main : AppCompatActivity() {
 

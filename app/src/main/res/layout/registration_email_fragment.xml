@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:text="@string/first_hello"
             android:textColor="@color/grey_dark" />
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:hint="@string/email_input"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/grey_light" />
@@ -47,7 +47,7 @@
             style="@android:style/TextAppearance.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/source_sans_pro_light"
+            android:fontFamily="@font/montserrat"
             android:text="@string/account_exist"
             android:textColor="@color/grey_light" />
 

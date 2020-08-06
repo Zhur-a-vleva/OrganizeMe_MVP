@@ -1,12 +1,15 @@
-package registrationBlock
+package com.example.organizeme.registrationBlock
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
 class RegistrationEmailFragment : Fragment(R.layout.registration_email_fragment) {
+
+    private val fragmentTransaction = fragmentManager?.beginTransaction()
 
     companion object {
 
@@ -20,6 +23,6 @@ class RegistrationEmailFragment : Fragment(R.layout.registration_email_fragment)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        val emailInput : EditText = view.findViewById(R.id.email_input)
     }
 }

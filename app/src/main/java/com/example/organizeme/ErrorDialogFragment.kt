@@ -1,10 +1,11 @@
+package com.example.organizeme
+
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import com.example.organizeme.R
 
 class ErrorDialogFragment : DialogFragment() {
 
@@ -21,18 +22,25 @@ class ErrorDialogFragment : DialogFragment() {
         val bundle = arguments
         if (bundle != null && bundle.containsKey(ERROR_TYPE_KEY)) {
             when (bundle.get(ERROR_TYPE_KEY)) {
-                ErrorType.EMAIL_IS_NOT_REGISTERED -> {
+                ErrorType.EMAIL_IS_NOT_REGISTERED.toString() -> {
                     errorMessage?.text = getString(R.string.email_is_not_registered)
                 }
-                ErrorType.PASSWORD_IS_NOT_CORRECT -> {
+                ErrorType.PASSWORD_IS_NOT_CORRECT.toString() -> {
                     errorMessage?.text = getString(R.string.password_is_not_correct)
+                }
+                ErrorType.EMAIL_IS_NOT_WRITTEN.toString() -> {
+                    errorMessage?.text = getString(R.string.email_is_not_written)
+                }
+                ErrorType.PASSWORD_IS_NOT_WRITTEN.toString() -> {
+                    errorMessage?.text = getString(R.string.passwrod_is_not_written)
+                }
+                ErrorType.EMAIL_IS_NOT_CORRECT.toString() -> {
+                    errorMessage?.text = getString(R.string.email_is_not_correct)
                 }
             }
         }
 
         builder.setView(view)
-
-        //TODO: dialog.cancel() при клике на контекст
 
         return builder.create()
     }

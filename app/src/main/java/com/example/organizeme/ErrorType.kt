@@ -1,0 +1,10 @@
+package com.example.organizeme
+
+enum class ErrorType {
+    PASSWORD_IS_NOT_LONG,
+    EMAIL_IS_NOT_CORRECT,
+    EMAIL_IS_NOT_WRITTEN,
+    PASSWORD_IS_NOT_WRITTEN,
+    EMAIL_IS_NOT_REGISTERED,
+    PASSWORD_IS_NOT_CORRECT
+}

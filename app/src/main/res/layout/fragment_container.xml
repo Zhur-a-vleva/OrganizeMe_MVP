@@ -6,4 +6,13 @@
     android:id="@+id/fragment_container"
     tools:context="Main">
 
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/blue"
+        android:visibility="invisible"
+        />
+
 </FrameLayout>
