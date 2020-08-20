@@ -1,21 +1,27 @@
 package com.example.organizeme.profileBlock
 
 import android.content.Context
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
-class ProfileFragment : Fragment(R.layout.profile_fragment) {
+class ProfileFragment : Fragment() {
+
+    private lateinit var email: String
 
     companion object {
         const val name = "ProfileFragment"
-        private lateinit var context: Context
-        private lateinit var email: String
+    }
 
-        fun newInstance(cont: Context, em: String): ProfileFragment {
-            email = em
-            context = cont
-            return ProfileFragment()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.profile_fragment, container, false)
     }
 
 }

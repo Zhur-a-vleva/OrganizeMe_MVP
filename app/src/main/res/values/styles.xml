@@ -1,7 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
     <style name="BlueButtonStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -17,6 +18,19 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
         <item name="cornerRadius">7dp</item>
         <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="EditTextOutlinedStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColorHint">@color/grey_light</item>
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="boxCornerRadiusBottomEnd">7dp</item>
+        <item name="boxCornerRadiusBottomStart">7dp</item>
+        <item name="boxCornerRadiusTopEnd">7dp</item>
+        <item name="boxCornerRadiusTopStart">7dp</item>
+
     </style>
 
 </resources>

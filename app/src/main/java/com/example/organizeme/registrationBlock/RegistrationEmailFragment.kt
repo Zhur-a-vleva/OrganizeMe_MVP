@@ -2,27 +2,28 @@ package com.example.organizeme.registrationBlock
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.EditText
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
-class RegistrationEmailFragment : Fragment(R.layout.registration_email_fragment) {
+class RegistrationEmailFragment : Fragment() {
 
-    private val fragmentTransaction = fragmentManager?.beginTransaction()
 
     companion object {
-
         const val name = "RegistrationFragment"
-        private lateinit var context: Context
+    }
 
-        fun newInstance(cont: Context): RegistrationEmailFragment {
-            context = cont
-            return RegistrationEmailFragment()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.registration_email_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val emailInput : EditText = view.findViewById(R.id.email_input)
+        super.onViewCreated(view, savedInstanceState)
     }
 }

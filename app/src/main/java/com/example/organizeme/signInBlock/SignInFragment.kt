@@ -1,43 +1,52 @@
 package com.example.organizeme.signInBlock
 
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.method.PasswordTransformationMethod
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.organizeme.ErrorDialogFragment
 import com.example.organizeme.ErrorType
 import com.example.organizeme.R
-import com.example.organizeme.profileBlock.ProfileFragment
-import com.example.organizeme.registrationBlock.RegistrationEmailFragment
+import com.google.android.material.textfield.TextInputLayout
 
 
-class SignInFragment : Fragment(R.layout.sign_in_fragment), SignInFragmentInterface {
+class SignInFragment : Fragment(), SignInFragmentInterface {
 
-    private val presenter = SignInPresenter(this)
-    private val fragmentTransaction = fragmentManager?.beginTransaction()
+    private lateinit var presenter: SignInPresenter
+    private lateinit var navigationController: NavController
 
     companion object {
-
         const val name = "SignInFragment"
-        private lateinit var context: Context
+    }
 
-        fun newInstance(cont: Context): SignInFragment {
-            context = cont
-            return SignInFragment()
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        presenter = SignInPresenter(this)
+        navigationController = NavHostFragment.findNavController(this)
+        return inflater.inflate(R.layout.sign_in_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailInput: EditText = view.findViewById(R.id.email_input)
-        val passwordInput: EditText = view.findViewById(R.id.password_input)
+        val emailInput: EditText = view.findViewById(R.id.sign_in_email_input)
+        val passwordInputLayout: TextInputLayout =
+            view.findViewById(R.id.sign_in_password_input_layout)
+        var isPasswordVisible = false
+        val passwordInput: EditText = view.findViewById(R.id.sign_in_password_input)
         val forgotPassword: TextView = view.findViewById(R.id.forgot_password)
         val signInButton: Button = view.findViewById(R.id.sign_in)
         val signUp: TextView = view.findViewById(R.id.sign_up)
@@ -57,6 +66,17 @@ class SignInFragment : Fragment(R.layout.sign_in_fragment), SignInFragmentInterf
 
         })
 
+        passwordInputLayout.setEndIconOnClickListener {
+            if (isPasswordVisible) {
+                passwordInputLayout.setEndIconDrawable(R.drawable.eye)
+                passwordInput.transformationMethod = PasswordTransformationMethod()
+                isPasswordVisible = false
+            } else {
+                passwordInputLayout.setEndIconDrawable(R.drawable.crossed_out_eye)
+                passwordInput.transformationMethod = null
+                isPasswordVisible = true
+            }
+        }
         forgotPassword.setOnClickListener {
             val alertDialog = AlertDialog.Builder(context)
             val dialog = alertDialog.create()
@@ -105,13 +125,9 @@ class SignInFragment : Fragment(R.layout.sign_in_fragment), SignInFragmentInterf
         }
 
         signUp.setOnClickListener {
-            fragmentTransaction?.replace(
-                R.id.fragment_container,
-                RegistrationEmailFragment.newInstance(SignInFragment.context)
-            )
-                ?.commit()
-            fragmentTransaction?.addToBackStack(RegistrationEmailFragment.name)
+            navigationController.navigate(R.id.registrationEmailFragment)
         }
+
     }
 
     override fun signInFailed(error: ErrorType) {
@@ -119,16 +135,11 @@ class SignInFragment : Fragment(R.layout.sign_in_fragment), SignInFragmentInterf
         bundle.putString(ErrorDialogFragment.ERROR_TYPE_KEY, error.toString())
         val errorMessage = ErrorDialogFragment()
         errorMessage.arguments = bundle
-        fragmentTransaction?.let { errorMessage.show(it, errorMessage.tag) }
+        fragmentManager?.beginTransaction()?.let { errorMessage.show(it, errorMessage.tag) }
     }
 
     override fun showProfile(email: String) {
-        fragmentTransaction?.replace(
-            R.id.fragment_container,
-            ProfileFragment.newInstance(Companion.context, email)
-        )
-            ?.commit()
-        fragmentTransaction?.addToBackStack(ProfileFragment.name)
+        navigationController.navigate(R.id.profileFragment)
     }
 
     override fun sendPassword(email: String, password: String) {

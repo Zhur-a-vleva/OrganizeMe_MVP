@@ -21,27 +21,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/email_input"
-            style="@android:style/TextAppearance.Medium"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/EditTextOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
-            android:fontFamily="@font/montserrat"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/grey_light" />
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/blue">
 
-        <EditText
-            android:id="@+id/password_input"
-            style="@android:style/TextAppearance.Medium"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sign_in_email_input"
+                style="@style/EditTextOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_in_password_input_layout"
+            style="@style/EditTextOutlinedStyle"
             android:layout_width="match_parent"
-            android:longClickable="false"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:hint="@string/password"
-            android:inputType="textPassword"
-            android:textColorHint="@color/grey_light" />
+            android:layout_marginTop="@dimen/small_layout_margin"
+            app:errorEnabled="true"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/grey_light"
+            app:endIconDrawable="@drawable/eye"
+            app:errorIconDrawable="@drawable/error"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/blue">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/sign_in_password_input"
+                style="@style/EditTextOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/forgot_password"

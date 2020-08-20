@@ -5,18 +5,13 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.organizeme.registrationBlock.RegistrationEmailFragment
-import com.example.organizeme.signInBlock.SignInFragment
+import androidx.navigation.fragment.findNavController
 
 class Main : AppCompatActivity() {
 
-    private val fragmentManager = supportFragmentManager.beginTransaction()
     private lateinit var sharedPreferences: SharedPreferences
     private val firstRunKey = "FIRST_RUN_KEY"
     private val registrationActiveKey = "REGISTRATION_ACTIVE_KEY"
-    private val registrationFragment =
-        RegistrationEmailFragment.newInstance(this)
-    private val signInFragment = SignInFragment.newInstance(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +19,9 @@ class Main : AppCompatActivity() {
 
         //initialize sharedPreferences
         sharedPreferences = getSharedPreferences("com.example.organizeme", Context.MODE_PRIVATE)
+
+        val navigationController =
+            supportFragmentManager.findFragmentById(R.id.navigation_fragment)?.findNavController()
 
         //checking first run
         if (sharedPreferences.getBoolean(firstRunKey, true)) {
@@ -35,10 +33,7 @@ class Main : AppCompatActivity() {
             }
 
             //show the "registration" fragment, if it's the first run
-            fragmentManager
-                .add(R.id.fragment_container, registrationFragment)
-                .commit()
-            fragmentManager.addToBackStack(RegistrationEmailFragment.name)
+            navigationController?.navigate(R.id.registrationEmailFragment)
 
             //edit "firstRun" state
             sharedPreferences.edit().putBoolean(firstRunKey, false).apply()
@@ -50,20 +45,9 @@ class Main : AppCompatActivity() {
                 Toast.makeText(this, "Not first run", Toast.LENGTH_LONG).show()
             }
 
-            //show the "sign in" fragment, if it's not the first run
-            fragmentManager
-                .add(R.id.fragment_container, signInFragment)
-                .commit()
-            fragmentManager.addToBackStack(SignInFragment.name)
+            //show the "sign in" fragment, if it's not the first ru
+            navigationController?.navigate(R.id.signInFragment)
         }
     }
 
-    override fun onBackPressed() {
-        if (sharedPreferences.getBoolean(registrationActiveKey, true)) {
-            fragmentManager.remove(registrationFragment)
-        } else {
-            fragmentManager.remove(signInFragment)
-        }
-        super.onBackPressed()
-    }
 }
