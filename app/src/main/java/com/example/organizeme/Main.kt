@@ -9,6 +9,8 @@ import androidx.navigation.fragment.findNavController
 
 class Main : AppCompatActivity() {
 
+    //TODO(Make toast more beautiful)
+
     private lateinit var sharedPreferences: SharedPreferences
     private val firstRunKey = "FIRST_RUN_KEY"
     private val registrationActiveKey = "REGISTRATION_ACTIVE_KEY"

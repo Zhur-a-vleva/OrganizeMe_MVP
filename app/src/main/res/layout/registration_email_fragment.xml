@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/registration"
+    android:id="@+id/registration_email_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/large_layout_margin">
@@ -11,18 +11,17 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/registration"
-        app:layout_constraintLeft_toLeftOf="@id/registration"
-        app:layout_constraintRight_toRightOf="@id/registration"
-        app:layout_constraintTop_toTopOf="@id/registration">
+        app:layout_constraintBottom_toBottomOf="@+id/registration_email_fragment"
+        app:layout_constraintLeft_toLeftOf="@id/registration_email_fragment"
+        app:layout_constraintRight_toRightOf="@id/registration_email_fragment"
+        app:layout_constraintTop_toTopOf="@id/registration_email_fragment">
 
         <ImageView
-            android:id="@+id/app_name_image"
+            android:id="@+id/registration_email_app_name_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/first_hello"
             style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,21 +30,35 @@
             android:text="@string/first_hello"
             android:textColor="@color/grey_dark" />
 
-        <EditText
-            android:id="@+id/email_input"
-            style="@android:style/TextAppearance.Medium"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/registration_email_fragment_email_input_layout"
+            style="@style/EditTextOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_layout_margin"
-            android:fontFamily="@font/montserrat"
-            android:hint="@string/email_input"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/grey_light" />
+            android:textColorHint="@color/grey_light"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@drawable/error"
+            app:errorIconTint="@color/red"
+            app:errorTextColor="@color/red"
+            app:hintTextColor="@color/blue">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registration_email_fragment_email_input"
+                style="@style/EditTextOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:hint="@string/write_your_email"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/account_exist"
+            android:id="@+id/registration_email_account_exist"
             style="@android:style/TextAppearance.Small"
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/small_layout_margin"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:text="@string/account_exist"
@@ -54,11 +67,11 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/next"
+        android:id="@+id/registration_email_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow_right"
-        app:layout_constraintBottom_toBottomOf="@id/registration"
-        app:layout_constraintRight_toRightOf="@id/registration" />
+        app:layout_constraintBottom_toBottomOf="@id/registration_email_fragment"
+        app:layout_constraintRight_toRightOf="@id/registration_email_fragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,13 @@
     <string name="error_title"><u>Ошибка</u></string>
     <string name="email_is_not_registered">Такая почта не зарегистрирована. Повторите попытку еще раз</string>
     <string name="password_is_not_correct">Неверный пароль. Повторите попытку еще раз</string>
-    <string name="write_your_email">Введите свою почту</string>
+    <string name="email_is_not_correct">Введена некорректная почта</string>
+
     <string name="forgot_password_email">Ваш пароль от аккаунта: </string>
+    <string name="write_your_email">Введите свою почту</string>
     <string name="send_password">Отправить пароль</string>
     <string name="email_is_not_written">Введите, пожалуйста, почту</string>
     <string name="passwrod_is_not_written">Введите, пожалуйста, пароль</string>
-    <string name="email_is_not_correct">Введена некорректная почта</string>
+    <string name="email_is_exist">Такая почта уже зарегистрирована</string>
+
 </resources>

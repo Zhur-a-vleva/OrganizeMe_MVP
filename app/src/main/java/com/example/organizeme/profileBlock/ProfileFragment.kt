@@ -1,6 +1,5 @@
 package com.example.organizeme.profileBlock
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
 class ProfileFragment : Fragment() {
+
+    //TODO(OnBackListener "Do you want to exit?")
 
     private lateinit var email: String
 

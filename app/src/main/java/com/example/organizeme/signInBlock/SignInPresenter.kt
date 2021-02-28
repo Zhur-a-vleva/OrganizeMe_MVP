@@ -10,7 +10,6 @@ class SignInPresenter(private val view: SignInFragmentInterface) : SignInPresent
     private val repository = SignInRepository()
 
     override fun onSignInButtonClicked(email: String, password: String) {
-        //TODO: сделать предупреждение в поле, вместо диалога
         if (!isValidEmail(email)) {
             view.signInFailed(ErrorType.EMAIL_IS_NOT_CORRECT)
         }
@@ -25,19 +24,12 @@ class SignInPresenter(private val view: SignInFragmentInterface) : SignInPresent
     }
 
     override fun onForgotPasswordClicked(email: String) {
-        view.sendPassword(email, repository.getPassword(email))
+        repository.sendPassword(email)
     }
 
     fun isValidEmail(email: String): Boolean {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email)
             .matches()
-    }
-
-    fun isValidPassword(password: String): Boolean {
-        if (password.length >= 8) {
-            return true
-        }
-        return false
     }
 
 }

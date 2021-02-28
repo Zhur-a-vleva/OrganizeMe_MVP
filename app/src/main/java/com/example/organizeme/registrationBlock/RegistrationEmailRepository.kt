@@ -1,6 +1,7 @@
-package com.example.organizeme.signInBlock
+package com.example.organizeme.registrationBlock
 
-class SignInRepository {
+class RegistrationEmailRepository {
+
     /*
     //temporary token
     private val token = "YFTSs_-BbAkmrn16cEuQ-7mT1TXDpTKEASL66lDUBXRzIljYA6HBSdMfjxFcPfGA"
@@ -12,33 +13,22 @@ class SignInRepository {
             })
             .build()
 
-        private val signInApi: SignInApi = Retrofit.Builder()
+        private val registrationEmailApi: = Retrofit.Builder()
             .baseUrl("url")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(SignInApi::class.java)
+            .create(RegistrationEmailApi::class.java)
     }
      */
 
     fun checkEmail(email: String): Boolean {
-        //TODO(чекнуть, существует ли такая почта)
+        //TODO: чекнуть, существует ли такая почта
         //Test information
         if (email.toLowerCase() == "zhur.a.vleva.darya21@gmail.com") {
             return true
         }
         return false
     }
-
-    fun getPassword(email: String): String {
-        //TODO(запросить пароль с БД)
-        //Test information
-        return "n5i9H3m7PW"
-    }
-
-    fun sendPassword(email: String) {
-        //TODO(Send password through back)
-    }
-
 }

@@ -2,19 +2,16 @@ package com.example.organizeme.signInBlock
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.organizeme.ErrorDialogFragment
 import com.example.organizeme.ErrorType
 import com.example.organizeme.R
 import com.google.android.material.textfield.TextInputLayout
@@ -24,6 +21,9 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
 
     private lateinit var presenter: SignInPresenter
     private lateinit var navigationController: NavController
+
+    private lateinit var emailInputLayout: TextInputLayout
+    private lateinit var passwordInputLayout: TextInputLayout
 
     companion object {
         const val name = "SignInFragment"
@@ -42,73 +42,62 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val emailInput: EditText = view.findViewById(R.id.sign_in_email_input)
-        val passwordInputLayout: TextInputLayout =
+        emailInputLayout = view.findViewById(R.id.sign_in_email_input_layout)
+
+        passwordInputLayout =
             view.findViewById(R.id.sign_in_password_input_layout)
         var isPasswordVisible = false
-        val passwordInput: EditText = view.findViewById(R.id.sign_in_password_input)
-        val forgotPassword: TextView = view.findViewById(R.id.forgot_password)
-        val signInButton: Button = view.findViewById(R.id.sign_in)
-        val signUp: TextView = view.findViewById(R.id.sign_up)
 
-        emailInput.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
+        val forgotPassword: TextView = view.findViewById(R.id.sign_in_forgot_password)
+
+        val signInButton: Button = view.findViewById(R.id.sign_in_button)
+
+        val signUp: TextView = view.findViewById(R.id.sign_in_sign_up)
+
+        emailInputLayout.editText?.addTextChangedListener {
+            if (!presenter.isValidEmail(it.toString())) {
+                emailInputLayout.error = getString(R.string.email_is_not_correct)
             }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            else {
+                emailInputLayout.error = null
             }
-
-            override fun onTextChanged(email: CharSequence?, start: Int, before: Int, count: Int) {
-                if (!presenter.isValidEmail(email.toString())) {
-                    //TODO: дизайн, написать, что почта неверно написана
-                }
-            }
-
-        })
+        }
 
         passwordInputLayout.setEndIconOnClickListener {
             if (isPasswordVisible) {
                 passwordInputLayout.setEndIconDrawable(R.drawable.eye)
-                passwordInput.transformationMethod = PasswordTransformationMethod()
+                passwordInputLayout.editText?.transformationMethod = PasswordTransformationMethod()
                 isPasswordVisible = false
             } else {
                 passwordInputLayout.setEndIconDrawable(R.drawable.crossed_out_eye)
-                passwordInput.transformationMethod = null
+                passwordInputLayout.editText?.transformationMethod = null
                 isPasswordVisible = true
             }
         }
+
         forgotPassword.setOnClickListener {
             val alertDialog = AlertDialog.Builder(context)
             val dialog = alertDialog.create()
 
-            val view = layoutInflater.inflate(R.layout.forgot_password_dialog, null)
+            val view = layoutInflater.inflate(R.layout.forgot_password, null)
             dialog.setView(view)
 
-            val emailInputDialog: EditText = view.findViewById(R.id.email_input)
+            val emailInputDialogLayout: TextInputLayout =
+                view.findViewById(R.id.forgot_password_email_input_layout)
 
-            emailInputDialog.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable) {}
-                override fun beforeTextChanged(
-                    s: CharSequence, start: Int,
-                    count: Int, after: Int
-                ) {
+            emailInputDialogLayout.editText?.addTextChangedListener {
+                if (!presenter.isValidEmail(it.toString())) {
+                    emailInputDialogLayout.error = getString(R.string.email_is_not_correct)
+                } else {
+                    emailInputDialogLayout.error = null
                 }
+            }
 
-                override fun onTextChanged(
-                    email: CharSequence, start: Int,
-                    before: Int, count: Int
-                ) {
-                    if (!presenter.isValidEmail(email.toString())) {
-                        //TODO: дизайн, написать, что почта неверно написана
-                    }
-                }
-            })
-
-            val sendPassword: Button = view.findViewById(R.id.send_password)
+            val sendPassword: Button = view.findViewById(R.id.forgot_password_send_password)
 
             sendPassword.setOnClickListener {
-                if (presenter.isValidEmail(emailInputDialog.text.toString())) {
-                    val email = emailInputDialog.text.toString()
+                if (presenter.isValidEmail(emailInputDialogLayout.editText?.text.toString())) {
+                    val email = emailInputDialogLayout.editText?.text.toString()
                     presenter.onForgotPasswordClicked(email)
                     dialog.cancel()
                 }
@@ -119,8 +108,8 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
 
         signInButton.setOnClickListener {
             presenter.onSignInButtonClicked(
-                emailInput.text.toString(),
-                passwordInput.text.toString()
+                emailInputLayout.editText?.text.toString(),
+                passwordInputLayout.editText?.text.toString()
             )
         }
 
@@ -131,24 +120,22 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
     }
 
     override fun signInFailed(error: ErrorType) {
-        val bundle = Bundle()
-        bundle.putString(ErrorDialogFragment.ERROR_TYPE_KEY, error.toString())
-        val errorMessage = ErrorDialogFragment()
-        errorMessage.arguments = bundle
-        fragmentManager?.beginTransaction()?.let { errorMessage.show(it, errorMessage.tag) }
+        if (error == ErrorType.EMAIL_IS_NOT_CORRECT) {
+            emailInputLayout.error = getString(R.string.email_is_not_correct)
+        } else if (error == ErrorType.EMAIL_IS_NOT_REGISTERED) {
+            emailInputLayout.error = getString(R.string.email_is_not_registered)
+        } else if (error == ErrorType.PASSWORD_IS_NOT_CORRECT) {
+            passwordInputLayout.error = getString(R.string.password_is_not_correct)
+        }
     }
 
     override fun showProfile(email: String) {
         navigationController.navigate(R.id.profileFragment)
     }
 
-    override fun sendPassword(email: String, password: String) {
-        //TODO: через бэк
-    }
 }
 
 interface SignInFragmentInterface {
     fun signInFailed(error: ErrorType)
     fun showProfile(email: String)
-    fun sendPassword(email: String, password: String)
 }
