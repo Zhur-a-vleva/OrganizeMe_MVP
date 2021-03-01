@@ -1,4 +1,4 @@
-package com.example.organizeme.registrationBlock
+package com.example.organizeme.registrationBlock.Email
 
 import android.text.TextUtils
 import android.util.Patterns

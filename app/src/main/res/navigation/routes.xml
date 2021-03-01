@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/registrationEmailFragment"
-        android:name="com.example.organizeme.registrationBlock.RegistrationEmailFragment"
+        android:name="com.example.organizeme.registrationBlock.Email.RegistrationEmailFragment"
         android:label="RegistrationEmailFragment" >
         <action
             android:id="@+id/action_registrationEmailFragment_to_signInFragment"
