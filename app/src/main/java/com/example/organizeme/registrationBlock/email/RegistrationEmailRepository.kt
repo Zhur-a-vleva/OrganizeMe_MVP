@@ -1,4 +1,4 @@
-package com.example.organizeme.registrationBlock.Email
+package com.example.organizeme.registrationBlock.email
 
 class RegistrationEmailRepository {
 

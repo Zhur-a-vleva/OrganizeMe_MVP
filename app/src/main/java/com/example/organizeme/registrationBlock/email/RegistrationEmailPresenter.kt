@@ -1,4 +1,4 @@
-package com.example.organizeme.registrationBlock.Email
+package com.example.organizeme.registrationBlock.email
 
 import android.text.TextUtils
 import android.util.Patterns
@@ -13,7 +13,7 @@ class RegistrationEmailPresenter(private val view: RegistrationEmailFragmentInte
         return repository.checkEmail(email)
     }
 
-    fun isValidEmail(email: String): Boolean {
+    fun isEmailValid(email: String): Boolean {
         return !TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email)
             .matches()
     }

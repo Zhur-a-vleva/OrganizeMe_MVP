@@ -1,4 +1,4 @@
-package com.example.organizeme.registrationBlock.Email
+package com.example.organizeme.registrationBlock.email
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,10 +18,8 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
     private lateinit var presenter: RegistrationEmailPresenter
     private lateinit var navigationController: NavController
 
-    private lateinit var emailInputLayout: TextInputLayout
-
     companion object {
-        const val name = "RegistrationFragment"
+        const val name = "RegistrationEmailFragment"
     }
 
     override fun onCreateView(
@@ -37,17 +35,23 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        emailInputLayout = view.findViewById(R.id.registration_email_fragment_email_input_layout)
+        //TODO(use? bundle)
+
+        var emailInputLayout: TextInputLayout = view.findViewById(R.id.registration_email_fragment_email_input_layout)
 
         val accountExist: TextView = view.findViewById(R.id.registration_email_account_exist)
 
-        val nextButton: ImageView = view.findViewById(R.id.registration_email_next)
+        val nextButton: ImageView = view.findViewById(R.id.registration_email_fragment_next)
 
         emailInputLayout.editText?.addTextChangedListener {
+            if (it.toString() == "") {
+                //TODO(check is it work)
+                emailInputLayout.error = null;
+            }
             if (presenter.isEmailExist(it.toString())) {
                 emailInputLayout.error = getString(R.string.email_is_exist)
             }
-            else if (!presenter.isValidEmail(it.toString())) {
+            else if (!presenter.isEmailValid(it.toString())) {
                 emailInputLayout.error = getString(R.string.email_is_not_correct)
             }
             else {
@@ -61,7 +65,7 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
 
         nextButton.setOnClickListener {
             if (emailInputLayout.error == null) {
-
+                navigationController.navigate(R.id.registrationNicknameFragment)
             }
         }
     }

@@ -21,7 +21,12 @@
     <string name="write_your_email">Введите свою почту</string>
     <string name="send_password">Отправить пароль</string>
     <string name="email_is_not_written">Введите, пожалуйста, почту</string>
-    <string name="passwrod_is_not_written">Введите, пожалуйста, пароль</string>
+    <string name="password_is_not_written">Введите, пожалуйста, пароль</string>
     <string name="email_is_exist">Такая почта уже зарегистрирована</string>
+
+    <string name="create_nickname">Придумайте, пожалуйста, никнейм</string>
+    <string name="nickname_example">zhur.a.vleva</string>
+    <string name="nickname_is_exist">Такой никнейм уже существует</string>
+    <string name="nickname_is_not_correct">Введен некорректный никнейм</string>
 
 </resources>
