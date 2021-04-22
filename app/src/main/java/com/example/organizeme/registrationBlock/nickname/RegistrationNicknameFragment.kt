@@ -34,7 +34,10 @@ class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO(implement buttons, use? bundle)
+        //TODO(use? bundle)
+
+        var bundle: Bundle? = arguments
+
         var nicknameInputLayout: TextInputLayout =
             view.findViewById(R.id.registration_nickname_fragment_nickname_input_layout)
 
@@ -47,12 +50,20 @@ class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
                 nicknameInputLayout.error = null;
             } else if (presenter.isNicknameExist(it.toString())) {
                 nicknameInputLayout.error = getString(R.string.nickname_is_exist)
-            } else if (presenter.isNicknameValid(it.toString())) {
+            } else if (!presenter.isNicknameValid(it.toString())) {
                 //TODO(add types of errors)
                 nicknameInputLayout.error = getString(R.string.nickname_is_not_correct)
             } else {
                 nicknameInputLayout.error = null;
             }
+        }
+
+        prevButton.setOnClickListener {
+            navigationController.navigate(R.id.registrationEmailFragment, bundle)
+        }
+
+        nextButton.setOnClickListener {
+            //TODO(navigationController.navigate(R.id.registrationPasswordFragment))
         }
     }
 }

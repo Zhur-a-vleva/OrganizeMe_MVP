@@ -2,15 +2,22 @@ package com.example.organizeme.registrationBlock.email
 
 import android.text.TextUtils
 import android.util.Patterns
-import androidx.fragment.app.Fragment
+import com.example.organizeme.Observable
 
-class RegistrationEmailPresenter(private val view: RegistrationEmailFragmentInterface) :
-    Fragment() {
+class RegistrationEmailViewModel {
 
-    private val repository = RegistrationEmailRepository()
+    private val model = RegistrationEmailModel()
+
+    val email: Observable<String?> = Observable(null)
+
+    init {
+        load()
+    }
+
+    private fun load()
 
     fun isEmailExist(email: String): Boolean {
-        return repository.checkEmail(email)
+        return model.checkEmail(email)
     }
 
     fun isEmailValid(email: String): Boolean {

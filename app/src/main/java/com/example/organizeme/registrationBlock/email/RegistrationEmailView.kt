@@ -15,8 +15,10 @@ import com.google.android.material.textfield.TextInputLayout
 
 class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface {
 
-    private lateinit var presenter: RegistrationEmailPresenter
+    private lateinit var presenter: RegistrationEmailViewModel
     private lateinit var navigationController: NavController
+
+    private val emailKey = "EMAIL_KEY"
 
     companion object {
         const val name = "RegistrationEmailFragment"
@@ -27,7 +29,7 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        presenter = RegistrationEmailPresenter(this)
+        presenter = RegistrationEmailViewModel(this)
         navigationController = NavHostFragment.findNavController(this)
         return inflater.inflate(R.layout.registration_email_fragment, container, false)
     }
@@ -36,12 +38,20 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
         super.onViewCreated(view, savedInstanceState)
 
         //TODO(use? bundle)
+        var bundle = arguments
+        if (bundle == null) {
+            bundle = Bundle()
+        }
 
         var emailInputLayout: TextInputLayout = view.findViewById(R.id.registration_email_fragment_email_input_layout)
 
         val accountExist: TextView = view.findViewById(R.id.registration_email_account_exist)
 
         val nextButton: ImageView = view.findViewById(R.id.registration_email_fragment_next)
+
+        if (bundle != null && bundle.containsKey(emailKey)) {
+            emailInputLayout.editText?.setText(bundle.getString(emailKey))
+        }
 
         emailInputLayout.editText?.addTextChangedListener {
             if (it.toString() == "") {
@@ -64,8 +74,12 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
         }
 
         nextButton.setOnClickListener {
-            if (emailInputLayout.error == null) {
-                navigationController.navigate(R.id.registrationNicknameFragment)
+            if (emailInputLayout.editText?.text.toString() == "") {
+                emailInputLayout.error = getString(R.string.input_email_please)
+            }
+            else if (emailInputLayout.error == null) {
+                bundle.putString(emailKey, emailInputLayout.editText?.text.toString())
+                navigationController.navigate(R.id.registrationNicknameFragment, bundle)
             }
         }
     }

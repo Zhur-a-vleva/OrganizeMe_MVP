@@ -36,6 +36,7 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
     ): View? {
         presenter = SignInPresenter(this)
         navigationController = NavHostFragment.findNavController(this)
+        context?.theme?.applyStyle(R.style.buttonStyle, true)
         return inflater.inflate(R.layout.sign_in_fragment, container, false)
     }
 
