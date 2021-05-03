@@ -115,7 +115,7 @@ class SignInFragment : Fragment(), SignInFragmentInterface {
         }
 
         signUp.setOnClickListener {
-            navigationController.navigate(R.id.registrationEmailFragment)
+            navigationController.navigate(R.id.registrationEmailView)
         }
 
     }

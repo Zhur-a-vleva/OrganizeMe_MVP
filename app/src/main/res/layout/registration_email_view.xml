@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/registration_email_fragment"
+    android:id="@+id/registration_email_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/large_layout_margin">
@@ -11,13 +11,13 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/registration_email_fragment"
-        app:layout_constraintLeft_toLeftOf="@id/registration_email_fragment"
-        app:layout_constraintRight_toRightOf="@id/registration_email_fragment"
-        app:layout_constraintTop_toTopOf="@id/registration_email_fragment">
+        app:layout_constraintBottom_toBottomOf="@+id/registration_email_view"
+        app:layout_constraintLeft_toLeftOf="@id/registration_email_view"
+        app:layout_constraintRight_toRightOf="@id/registration_email_view"
+        app:layout_constraintTop_toTopOf="@id/registration_email_view">
 
         <ImageView
-            android:id="@+id/registration_email_fragment_app_name_image"
+            android:id="@+id/registration_email_view_app_name_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -31,7 +31,7 @@
             android:textColor="@color/grey_dark" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/registration_email_fragment_email_input_layout"
+            android:id="@+id/registration_email_view_email_input_layout"
             style="@style/EditTextOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             app:hintTextColor="@color/blue">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registration_email_fragment_email_input"
+                android:id="@+id/registration_email_view_email_input"
                 style="@style/EditTextOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,11 +67,11 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/registration_email_fragment_next"
+        android:id="@+id/registration_email_view_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow_right"
-        app:layout_constraintBottom_toBottomOf="@id/registration_email_fragment"
-        app:layout_constraintRight_toRightOf="@id/registration_email_fragment" />
+        app:layout_constraintBottom_toBottomOf="@id/registration_email_view"
+        app:layout_constraintRight_toRightOf="@id/registration_email_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

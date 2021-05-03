@@ -33,7 +33,7 @@ class Main : AppCompatActivity() {
             }
 
             //show the "registration" fragment, if it's the first run
-            navigationController?.navigate(R.id.registrationEmailFragment)
+            navigationController?.navigate(R.id.registrationEmailView)
 
             //edit "firstRun" state
             sharedPreferences.edit().putBoolean(firstRunKey, false).apply()

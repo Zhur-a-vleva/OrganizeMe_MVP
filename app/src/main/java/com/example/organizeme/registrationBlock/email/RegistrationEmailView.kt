@@ -13,15 +13,14 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.organizeme.R
 import com.google.android.material.textfield.TextInputLayout
 
-class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface {
+class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
 
-    private lateinit var presenter: RegistrationEmailViewModel
+    private lateinit var viewModel: RegistrationEmailViewModel
     private lateinit var navigationController: NavController
-
-    private val emailKey = "EMAIL_KEY"
+    private lateinit var emailInputLayout: TextInputLayout
 
     companion object {
-        const val name = "RegistrationEmailFragment"
+        const val name = "RegistrationEmailView"
     }
 
     override fun onCreateView(
@@ -29,44 +28,22 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        presenter = RegistrationEmailViewModel(this)
+        viewModel = RegistrationEmailViewModel(arguments)
         navigationController = NavHostFragment.findNavController(this)
-        return inflater.inflate(R.layout.registration_email_fragment, container, false)
+        return inflater.inflate(R.layout.registration_email_view, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO(use? bundle)
-        var bundle = arguments
-        if (bundle == null) {
-            bundle = Bundle()
-        }
-
-        var emailInputLayout: TextInputLayout = view.findViewById(R.id.registration_email_fragment_email_input_layout)
-
+        emailInputLayout = view.findViewById(R.id.registration_email_view_email_input_layout)
         val accountExist: TextView = view.findViewById(R.id.registration_email_account_exist)
+        val nextButton: ImageView = view.findViewById(R.id.registration_email_view_next)
 
-        val nextButton: ImageView = view.findViewById(R.id.registration_email_fragment_next)
-
-        if (bundle != null && bundle.containsKey(emailKey)) {
-            emailInputLayout.editText?.setText(bundle.getString(emailKey))
-        }
+        viewModel.error.subscribe(::emailHasChanged)
 
         emailInputLayout.editText?.addTextChangedListener {
-            if (it.toString() == "") {
-                //TODO(check is it work)
-                emailInputLayout.error = null;
-            }
-            if (presenter.isEmailExist(it.toString())) {
-                emailInputLayout.error = getString(R.string.email_is_exist)
-            }
-            else if (!presenter.isEmailValid(it.toString())) {
-                emailInputLayout.error = getString(R.string.email_is_not_correct)
-            }
-            else {
-                emailInputLayout.error = null
-            }
+            viewModel.emailHasChanged(context, it.toString())
         }
 
         accountExist.setOnClickListener {
@@ -74,18 +51,28 @@ class RegistrationEmailFragment : Fragment(), RegistrationEmailFragmentInterface
         }
 
         nextButton.setOnClickListener {
-            if (emailInputLayout.editText?.text.toString() == "") {
-                emailInputLayout.error = getString(R.string.input_email_please)
-            }
-            else if (emailInputLayout.error == null) {
-                bundle.putString(emailKey, emailInputLayout.editText?.text.toString())
-                navigationController.navigate(R.id.registrationNicknameFragment, bundle)
+            if (emailInputLayout.error == null) {
+                var data = arguments
+                if (data == null) {
+                    data = Bundle()
+                }
+                data.putString(viewModel.emailKey, emailInputLayout.editText?.text.toString())
+                navigationController.navigate(R.id.registrationNicknameFragment, data)
             }
         }
     }
 
+    override fun emailHasChanged(it: String?) {
+        emailInputLayout.error = it
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.error.unsubscribe(::emailHasChanged)
+    }
+
 }
 
-interface RegistrationEmailFragmentInterface {
-
+interface RegistrationEmailObserverInterface {
+    fun emailHasChanged(it: String?)
 }

@@ -9,23 +9,11 @@
         android:name="com.example.organizeme.signInBlock.SignInFragment"
         android:label="SignInFragment" >
         <action
-            android:id="@+id/action_signInFragment_to_registrationEmailFragment"
-            app:destination="@id/registrationEmailFragment" />
-        <action
             android:id="@+id/action_signInFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/registrationEmailFragment"
-        android:name="com.example.organizeme.registrationBlock.email.RegistrationEmailFragment"
-        android:label="RegistrationEmailFragment" >
         <action
-            android:id="@+id/action_registrationEmailFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_registrationEmailFragment_to_registrationNicknameFragment"
-            app:destination="@id/registrationNicknameFragment" />
+            android:id="@+id/action_signInFragment_to_registrationEmailView"
+            app:destination="@id/registrationEmailView" />
     </fragment>
 
     <fragment
@@ -38,8 +26,19 @@
         android:name="com.example.organizeme.registrationBlock.nickname.RegistrationNicknameFragment"
         android:label="RegistrationNicknameFragment" >
         <action
-            android:id="@+id/action_registrationNicknameFragment_to_registrationEmailFragment"
-            app:destination="@id/registrationEmailFragment" />
+            android:id="@+id/action_registrationNicknameFragment_to_registrationEmailView"
+            app:destination="@id/registrationEmailView" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationEmailView"
+        android:name="com.example.organizeme.registrationBlock.email.RegistrationEmailView"
+        android:label="RegistrationEmailView" >
+        <action
+            android:id="@+id/action_registrationEmailView_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_registrationEmailView_to_registrationNicknameFragment"
+            app:destination="@id/registrationNicknameFragment" />
     </fragment>
 
 </navigation>

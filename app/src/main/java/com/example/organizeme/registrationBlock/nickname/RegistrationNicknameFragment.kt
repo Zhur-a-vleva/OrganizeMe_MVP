@@ -59,7 +59,7 @@ class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
         }
 
         prevButton.setOnClickListener {
-            navigationController.navigate(R.id.registrationEmailFragment, bundle)
+            navigationController.navigate(R.id.registrationEmailView, bundle)
         }
 
         nextButton.setOnClickListener {
