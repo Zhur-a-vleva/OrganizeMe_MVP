@@ -12,13 +12,14 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.organizeme.R
 import com.google.android.material.textfield.TextInputLayout
 
-class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
+class RegistrationNicknameView : Fragment(), RegistrationNicknameInterface {
 
-    private lateinit var presenter: RegistrationNicknamePresenter
+    private lateinit var viewModel: RegistrationNicknameViewModel
     private lateinit var navigationController: NavController
+    private lateinit var nicknameInputLayout: TextInputLayout
 
     companion object {
-        const val name = "RegistrationNicknameFragment"
+        const val name = "RegistrationNicknameView"
     }
 
     override fun onCreateView(
@@ -26,7 +27,7 @@ class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        presenter = RegistrationNicknamePresenter(this)
+        viewModel = RegistrationNicknameViewModel(arguments)
         navigationController = NavHostFragment.findNavController(this)
         return inflater.inflate(R.layout.registration_nickname_fragment, container, false)
     }
@@ -34,40 +35,50 @@ class RegistrationNicknameFragment : Fragment(), RegistrationNicknameInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //TODO(use? bundle)
-
-        var bundle: Bundle? = arguments
-
-        var nicknameInputLayout: TextInputLayout =
+        nicknameInputLayout =
             view.findViewById(R.id.registration_nickname_fragment_nickname_input_layout)
-
         val prevButton: ImageView = view.findViewById(R.id.registration_nickname_fragment_prev)
         val nextButton: ImageView = view.findViewById(R.id.registration_nickname_fragment_next)
+        var data = arguments
+        if (data == null) {
+            data = Bundle()
+        }
+
+        viewModel.error.subscribe(::nicknameHasChanged)
+        viewModel.nickname.subscribe(::setNicknameHint)
+
+        viewModel.setSavedData(arguments)
 
         nicknameInputLayout.editText?.addTextChangedListener {
-            if (it.toString() == "") {
-                //TODO(check is it work)
-                nicknameInputLayout.error = null;
-            } else if (presenter.isNicknameExist(it.toString())) {
-                nicknameInputLayout.error = getString(R.string.nickname_is_exist)
-            } else if (!presenter.isNicknameValid(it.toString())) {
-                //TODO(add types of errors)
-                nicknameInputLayout.error = getString(R.string.nickname_is_not_correct)
-            } else {
-                nicknameInputLayout.error = null;
-            }
+            viewModel.nicknameHasChanged(context, it.toString())
         }
 
         prevButton.setOnClickListener {
-            navigationController.navigate(R.id.registrationEmailView, bundle)
+            data.putString(viewModel.nicknameKey, nicknameInputLayout.editText?.text.toString())
+            navigationController.navigate(R.id.registrationEmailView, data)
         }
 
         nextButton.setOnClickListener {
             //TODO(navigationController.navigate(R.id.registrationPasswordFragment))
         }
     }
+
+    override fun nicknameHasChanged(it: String?) {
+        nicknameInputLayout.error = it
+    }
+
+    override fun setNicknameHint(it: String?) {
+        nicknameInputLayout.hint = it
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewModel.error.unsubscribe(::nicknameHasChanged)
+        viewModel.nickname.unsubscribe(::setNicknameHint)
+    }
 }
 
 interface RegistrationNicknameInterface {
-    //TODO(write or delete)
+    fun nicknameHasChanged(it: String?)
+    fun setNicknameHint(it: String?)
 }

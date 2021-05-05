@@ -1,6 +1,6 @@
 package com.example.organizeme.registrationBlock.nickname
 
-class RegistrationNicknameRepository {
+class RegistrationNicknameModel {
 
     /*
     //temporary token
@@ -26,7 +26,7 @@ class RegistrationNicknameRepository {
     fun checkNickname(nickname: String): Boolean {
         //TODO(check is this nickname exist)
         //testInformation
-        if (nickname.toLowerCase() == "zhur.a.vlvea") {
+        if (nickname.toLowerCase() == "zhur.a.vleva") {
             return true;
         }
         return false;

@@ -22,11 +22,11 @@
         android:label="ProfileFragment" />
 
     <fragment
-        android:id="@+id/registrationNicknameFragment"
-        android:name="com.example.organizeme.registrationBlock.nickname.RegistrationNicknameFragment"
-        android:label="RegistrationNicknameFragment" >
+        android:id="@+id/registrationNicknameView"
+        android:name="com.example.organizeme.registrationBlock.nickname.RegistrationNicknameView"
+        android:label="registrationNicknameView" >
         <action
-            android:id="@+id/action_registrationNicknameFragment_to_registrationEmailView"
+            android:id="@+id/action_registrationNicknameView_to_registrationEmailView"
             app:destination="@id/registrationEmailView" />
     </fragment>
     <fragment
@@ -37,8 +37,8 @@
             android:id="@+id/action_registrationEmailView_to_signInFragment"
             app:destination="@id/signInFragment" />
         <action
-            android:id="@+id/action_registrationEmailView_to_registrationNicknameFragment"
-            app:destination="@id/registrationNicknameFragment" />
+            android:id="@+id/action_registrationEmailView_to_registrationNicknameView"
+            app:destination="@id/registrationNicknameView" />
     </fragment>
 
 </navigation>

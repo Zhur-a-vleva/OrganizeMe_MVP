@@ -1,6 +1,7 @@
 package com.example.organizeme.registrationBlock.email
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +29,7 @@ class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = RegistrationEmailViewModel(arguments)
+        viewModel = RegistrationEmailViewModel()
         navigationController = NavHostFragment.findNavController(this)
         return inflater.inflate(R.layout.registration_email_view, container, false)
     }
@@ -41,6 +42,9 @@ class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
         val nextButton: ImageView = view.findViewById(R.id.registration_email_view_next)
 
         viewModel.error.subscribe(::emailHasChanged)
+        viewModel.email.subscribe(::setEmailHint)
+
+        viewModel.setSavedData(arguments)
 
         emailInputLayout.editText?.addTextChangedListener {
             viewModel.emailHasChanged(context, it.toString())
@@ -57,7 +61,7 @@ class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
                     data = Bundle()
                 }
                 data.putString(viewModel.emailKey, emailInputLayout.editText?.text.toString())
-                navigationController.navigate(R.id.registrationNicknameFragment, data)
+                navigationController.navigate(R.id.registrationNicknameView, data)
             }
         }
     }
@@ -66,13 +70,19 @@ class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
         emailInputLayout.error = it
     }
 
+    override fun setEmailHint(it: String?) {
+        emailInputLayout.editText?.text = Editable.Factory.getInstance().newEditable(it)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         viewModel.error.unsubscribe(::emailHasChanged)
+        viewModel.email.unsubscribe(::setEmailHint)
     }
 
 }
 
 interface RegistrationEmailObserverInterface {
     fun emailHasChanged(it: String?)
+    fun setEmailHint(it: String?)
 }

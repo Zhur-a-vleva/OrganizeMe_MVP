@@ -29,5 +29,6 @@
     <string name="nickname_is_not_correct">Введен некорректный никнейм</string>
     <string name="input_email_please">Введите, пожалуйста, почту</string>
     <string name="write_your_email">Введите вашу почту</string>
+    <string name="input_nickname_please">Введите, пожалуйста, никнейм</string>
 
 </resources>
