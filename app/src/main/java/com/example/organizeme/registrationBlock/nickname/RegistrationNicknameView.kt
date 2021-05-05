@@ -1,6 +1,7 @@
 package com.example.organizeme.registrationBlock.nickname
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -68,7 +69,7 @@ class RegistrationNicknameView : Fragment(), RegistrationNicknameInterface {
     }
 
     override fun setNicknameHint(it: String?) {
-        nicknameInputLayout.hint = it
+        nicknameInputLayout.editText?.text = Editable.Factory.getInstance().newEditable(it)
     }
 
     override fun onDestroyView() {
