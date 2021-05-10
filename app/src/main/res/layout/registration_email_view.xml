@@ -31,7 +31,7 @@
             android:textColor="@color/grey_dark" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/registration_email_view_email_input_layout"
+            android:id="@+id/emailInputLayout"
             style="@style/EditTextOutlinedStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/registration_email_account_exist"
+            android:id="@+id/accountExist"
             style="@android:style/TextAppearance.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/registration_email_view_next"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/arrow_right"

@@ -2,52 +2,41 @@ package com.example.organizeme.registrationBlock.email
 
 import android.os.Bundle
 import android.text.Editable
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.organizeme.R
-import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.registration_email_view.*
 
-class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
+class RegistrationEmailView : Fragment(R.layout.registration_email_view) {
 
-    private lateinit var viewModel: RegistrationEmailViewModel
+    private val viewModel: RegistrationEmailViewModel by viewModels()
     private lateinit var navigationController: NavController
-    private lateinit var emailInputLayout: TextInputLayout
 
     companion object {
         const val name = "RegistrationEmailView"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewModel = RegistrationEmailViewModel()
-        navigationController = NavHostFragment.findNavController(this)
-        return inflater.inflate(R.layout.registration_email_view, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        emailInputLayout = view.findViewById(R.id.registration_email_view_email_input_layout)
-        val accountExist: TextView = view.findViewById(R.id.registration_email_account_exist)
-        val nextButton: ImageView = view.findViewById(R.id.registration_email_view_next)
+        navigationController = NavHostFragment.findNavController(this)
 
-        viewModel.error.subscribe(::emailHasChanged)
-        viewModel.email.subscribe(::setEmailHint)
+        viewModel.error.observe(viewLifecycleOwner, Observer { error ->
+            emailInputLayout.error = error
+
+        })
+        viewModel.email.observe(viewLifecycleOwner, Observer { email ->
+            emailInputLayout.editText?.text = Editable.Factory.getInstance().newEditable(email)
+        })
 
         viewModel.setSavedData(arguments)
 
         emailInputLayout.editText?.addTextChangedListener {
-            viewModel.emailHasChanged(context, it.toString())
+            viewModel.errorHasChanged(context, it.toString())
         }
 
         accountExist.setOnClickListener {
@@ -65,24 +54,4 @@ class RegistrationEmailView : Fragment(), RegistrationEmailObserverInterface {
             }
         }
     }
-
-    override fun emailHasChanged(it: String?) {
-        emailInputLayout.error = it
-    }
-
-    override fun setEmailHint(it: String?) {
-        emailInputLayout.editText?.text = Editable.Factory.getInstance().newEditable(it)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        viewModel.error.unsubscribe(::emailHasChanged)
-        viewModel.email.unsubscribe(::setEmailHint)
-    }
-
-}
-
-interface RegistrationEmailObserverInterface {
-    fun emailHasChanged(it: String?)
-    fun setEmailHint(it: String?)
 }

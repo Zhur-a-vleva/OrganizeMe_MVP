@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
-class ProfileFragment : Fragment() {
+class ProfileView : Fragment() {
 
     //TODO(OnBackListener "Do you want to exit?")
 
     private lateinit var email: String
 
     companion object {
-        const val name = "ProfileFragment"
+        const val name = "ProfileView"
     }
 
     override fun onCreateView(
