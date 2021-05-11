@@ -2,44 +2,43 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/routes"
-    app:startDestination="@id/signInFragment">
+    app:startDestination="@id/signInView">
 
     <fragment
-        android:id="@+id/signInFragment"
-        android:name="com.example.organizeme.signInBlock.SignInFragment"
-        android:label="SignInFragment" >
+        android:id="@+id/signInView"
+        android:name="com.example.organizeme.signInBlock.SignInView"
+        android:label="SignInView" >
         <action
-            android:id="@+id/action_signInFragment_to_registrationEmailFragment"
-            app:destination="@id/registrationEmailFragment" />
+            android:id="@+id/action_signInView_to_profileView"
+            app:destination="@id/profileView" />
         <action
-            android:id="@+id/action_signInFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_signInView_to_registrationEmailView"
+            app:destination="@id/registrationEmailView" />
     </fragment>
 
     <fragment
-        android:id="@+id/registrationEmailFragment"
-        android:name="com.example.organizeme.registrationBlock.email.RegistrationEmailFragment"
-        android:label="RegistrationEmailFragment" >
+        android:id="@+id/profileView"
+        android:name="com.example.organizeme.profileBlock.ProfileView"
+        android:label="ProfileView" />
+
+    <fragment
+        android:id="@+id/registrationNicknameView"
+        android:name="com.example.organizeme.registrationBlock.nickname.RegistrationNicknameView"
+        android:label="registrationNicknameView" >
         <action
-            android:id="@+id/action_registrationEmailFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_registrationEmailFragment_to_registrationNicknameFragment"
-            app:destination="@id/registrationNicknameFragment" />
+            android:id="@+id/action_registrationNicknameView_to_registrationEmailView"
+            app:destination="@id/registrationEmailView" />
     </fragment>
-
     <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.example.organizeme.profileBlock.ProfileFragment"
-        android:label="ProfileFragment" />
-
-    <fragment
-        android:id="@+id/registrationNicknameFragment"
-        android:name="com.example.organizeme.registrationBlock.nickname.RegistrationNicknameFragment"
-        android:label="RegistrationNicknameFragment" >
+        android:id="@+id/registrationEmailView"
+        android:name="com.example.organizeme.registrationBlock.email.RegistrationEmailView"
+        android:label="RegistrationEmailView" >
         <action
-            android:id="@+id/action_registrationNicknameFragment_to_registrationEmailFragment"
-            app:destination="@id/registrationEmailFragment" />
+            android:id="@+id/action_registrationEmailView_to_signInView"
+            app:destination="@id/signInView" />
+        <action
+            android:id="@+id/action_registrationEmailView_to_registrationNicknameView"
+            app:destination="@id/registrationNicknameView" />
     </fragment>
 
 </navigation>

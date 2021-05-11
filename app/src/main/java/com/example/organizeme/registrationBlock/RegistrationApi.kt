@@ -12,4 +12,8 @@ interface RegistrationApi {
     @GET("way")
 
     fun checkEmail(@Path("way") path: String, @Query("access_token") token: String) : Single<Any>
+
+    @GET("way")
+
+    fun checkNickname(@Path("way") path: String, @Query("access_token") token: String) : Single<Any>
 }
