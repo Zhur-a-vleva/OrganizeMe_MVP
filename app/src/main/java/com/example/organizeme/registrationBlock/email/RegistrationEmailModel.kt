@@ -1,6 +1,6 @@
 package com.example.organizeme.registrationBlock.email
 
-class RegistrationEmailRepository {
+class RegistrationEmailModel {
 
     /*
     //temporary token
@@ -13,13 +13,13 @@ class RegistrationEmailRepository {
             })
             .build()
 
-        private val registrationEmailApi: = Retrofit.Builder()
+        private val registrationApi: = Retrofit.Builder()
             .baseUrl("url")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-            .create(RegistrationEmailApi::class.java)
+            .create(RegistrationApi::class.java)
     }
      */
 

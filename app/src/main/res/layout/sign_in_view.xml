@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sign_in_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/large_layout_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@+id/sign_in_view"
+            app:layout_constraintLeft_toLeftOf="@id/sign_in_view"
+            app:layout_constraintRight_toRightOf="@id/sign_in_view"
+            app:layout_constraintTop_toTopOf="@id/sign_in_view">
+
+            <ImageView
+                android:id="@+id/sign_in_app_name_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailInputLayout"
+                style="@style/EditTextOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_layout_margin"
+                android:textColorHint="@color/grey_light"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/error"
+                app:errorIconTint="@color/red"
+                app:errorTextColor="@color/red"
+                app:hintTextColor="@color/blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_in_email_input"
+                    style="@style/EditTextOutlinedStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passwordInputLayout"
+                style="@style/EditTextOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_layout_margin"
+                android:textColorHint="@color/grey_light"
+                app:endIconDrawable="@drawable/eye"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey_light"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/error"
+                app:errorIconTint="@color/red"
+                app:errorTextColor="@color/red"
+                app:hintTextColor="@color/blue">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sign_in_password_input"
+                    style="@style/EditTextOutlinedStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/password"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/forgotPassword"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/forgot_password"
+                android:textColor="@color/blue" />
+
+            <Button
+                android:id="@+id/signInButton"
+                style="@style/buttonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_layout_margin"
+                android:layout_marginBottom="@dimen/large_layout_margin"
+                android:text="@string/sign_in" />
+
+            <TextView
+                android:id="@+id/signUp"
+                style="@android:style/TextAppearance.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_layout_margin"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/sign_up"
+                android:textColor="@color/blue" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
