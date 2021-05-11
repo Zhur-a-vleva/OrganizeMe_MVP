@@ -41,8 +41,8 @@ class RegistrationNicknameView : Fragment(R.layout.registration_nickname_view) {
 
         viewModel.setSavedData(arguments)
 
-        nicknameInputLayout.editText?.addTextChangedListener {
-            viewModel.errorHasChanged(context, it.toString())
+        nicknameInputLayout.editText?.addTextChangedListener { nickname ->
+            viewModel.changeError(context, nickname.toString())
         }
 
         prevButton.setOnClickListener {

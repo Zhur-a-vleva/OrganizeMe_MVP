@@ -22,7 +22,7 @@ class RegistrationNicknameViewModel : ViewModel() {
         }
     }
 
-    fun errorHasChanged(context: Context?, nickname: String) {
+    fun changeError(context: Context?, nickname: String) {
         when {
             nickname == "" -> {
                 error.value = context?.getString(R.string.input_nickname_please)

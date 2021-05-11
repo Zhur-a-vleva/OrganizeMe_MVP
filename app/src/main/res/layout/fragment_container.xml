@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/fragment_container"
     tools:context="Main">
 
     <ProgressBar
@@ -13,10 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminateTint="@color/blue"
-        android:visibility="invisible"
-        />
+        android:visibility="invisible" />
 
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navigation_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"

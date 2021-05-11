@@ -1,28 +1,14 @@
 package com.example.organizeme.profileBlock
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.organizeme.R
 
-class ProfileView : Fragment() {
+class ProfileView : Fragment(R.layout.profile_view) {
 
     //TODO(OnBackListener "Do you want to exit?")
 
-    private lateinit var email: String
-
     companion object {
         const val name = "ProfileView"
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.profile_fragment, container, false)
     }
 
 }

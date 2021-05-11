@@ -24,7 +24,7 @@ class RegistrationEmailViewModel : ViewModel() {
         }
     }
 
-    fun errorHasChanged(context: Context?, email: String) {
+    fun changeError(context: Context?, email: String) {
         when {
             email == "" -> {
                 error.value = context?.getString(R.string.input_email_please)

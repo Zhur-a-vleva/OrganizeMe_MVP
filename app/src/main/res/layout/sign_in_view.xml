@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/sign_in_fragment"
+        android:id="@+id/sign_in_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/large_layout_margin">
@@ -15,10 +15,10 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="@+id/sign_in_fragment"
-            app:layout_constraintLeft_toLeftOf="@id/sign_in_fragment"
-            app:layout_constraintRight_toRightOf="@id/sign_in_fragment"
-            app:layout_constraintTop_toTopOf="@id/sign_in_fragment">
+            app:layout_constraintBottom_toBottomOf="@+id/sign_in_view"
+            app:layout_constraintLeft_toLeftOf="@id/sign_in_view"
+            app:layout_constraintRight_toRightOf="@id/sign_in_view"
+            app:layout_constraintTop_toTopOf="@id/sign_in_view">
 
             <ImageView
                 android:id="@+id/sign_in_app_name_image"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sign_in_email_input_layout"
+                android:id="@+id/emailInputLayout"
                 style="@style/EditTextOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/sign_in_password_input_layout"
+                android:id="@+id/passwordInputLayout"
                 style="@style/EditTextOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
-                android:id="@+id/sign_in_forgot_password"
+                android:id="@+id/forgotPassword"
                 style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                 android:textColor="@color/blue" />
 
             <Button
-                android:id="@+id/sign_in_button"
+                android:id="@+id/signInButton"
                 style="@style/buttonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:text="@string/sign_in" />
 
             <TextView
-                android:id="@+id/sign_in_sign_up"
+                android:id="@+id/signUp"
                 style="@android:style/TextAppearance.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

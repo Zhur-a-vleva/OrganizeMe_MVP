@@ -35,12 +35,12 @@ class RegistrationEmailView : Fragment(R.layout.registration_email_view) {
 
         viewModel.setSavedData(arguments)
 
-        emailInputLayout.editText?.addTextChangedListener {
-            viewModel.errorHasChanged(context, it.toString())
+        emailInputLayout.editText?.addTextChangedListener { email ->
+            viewModel.changeError(context, email.toString())
         }
 
         accountExist.setOnClickListener {
-            navigationController.navigate(R.id.signInFragment)
+            navigationController.navigate(R.id.signInView)
         }
 
         nextButton.setOnClickListener {
