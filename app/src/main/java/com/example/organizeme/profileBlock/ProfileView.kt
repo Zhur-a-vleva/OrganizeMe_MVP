@@ -1,9 +1,18 @@
 package com.example.organizeme.profileBlock
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.organizeme.R
+import kotlinx.android.synthetic.main.profile_view.*
 
 class ProfileView : Fragment(R.layout.profile_view) {
+
+    private lateinit var navigationController: NavController
+    private val viewModel: ProfileViewModel by viewModels()
 
     //TODO(OnBackListener "Do you want to exit?")
 
@@ -11,4 +20,33 @@ class ProfileView : Fragment(R.layout.profile_view) {
         const val name = "ProfileView"
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        navigationController = NavHostFragment.findNavController(this)
+
+        bottomNavigation.selectedItemId = R.id.profile
+        bottomNavigation.setOnNavigationItemSelectedListener { icon ->
+            when (icon.itemId) {
+                R.id.home -> {
+                    //TODO
+                    true
+                }
+                R.id.marathons -> {
+                    //TODO
+                    true
+                }
+                R.id.task -> {
+                    //TODO
+                    true
+                }
+                R.id.plans -> {
+                    //TODO
+                    true
+                }
+                R.id.profile -> {
+                    true
+                }
+                else -> false
+            }
+        }
+    }
 }

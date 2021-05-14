@@ -1,6 +1,6 @@
 package com.example.organizeme.signInBlock
 
-class SignInRepository {
+class SignInModel {
     /*
     //temporary token
     private val token = "YFTSs_-BbAkmrn16cEuQ-7mT1TXDpTKEASL66lDUBXRzIljYA6HBSdMfjxFcPfGA"
@@ -25,7 +25,7 @@ class SignInRepository {
     fun checkEmail(email: String): Boolean {
         //TODO(чекнуть, существует ли такая почта)
         //Test information
-        if (email.toLowerCase() == "zhur.a.vleva.darya21@gmail.com") {
+        if (email.toLowerCase() == "zhur.a.vleva.Darya21@gmail.com") {
             return true
         }
         return false
@@ -34,7 +34,7 @@ class SignInRepository {
     fun getPassword(email: String): String {
         //TODO(запросить пароль с БД)
         //Test information
-        return "n5i9H3m7PW"
+        return "."
     }
 
     fun sendPassword(email: String) {

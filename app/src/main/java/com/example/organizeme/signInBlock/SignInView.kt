@@ -18,6 +18,8 @@ import kotlinx.android.synthetic.main.sign_in_view.*
 
 class SignInView : Fragment(R.layout.sign_in_view) {
 
+    //TODO: fix email checking (Button pressed -> email checking, error displaying)
+
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var navigationController: NavController
 

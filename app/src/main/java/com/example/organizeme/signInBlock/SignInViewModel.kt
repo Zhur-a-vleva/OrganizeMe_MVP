@@ -10,7 +10,7 @@ import com.example.organizeme.R
 
 class SignInViewModel() : ViewModel() {
 
-    private val repository = SignInRepository()
+    private val repository = SignInModel()
 
     val endIconIsActive: MutableLiveData<Boolean> = MutableLiveData()
     val emailError: MutableLiveData<String?> = MutableLiveData()

@@ -30,5 +30,7 @@
     <string name="input_email_please">Введите, пожалуйста, почту</string>
     <string name="write_your_email">Введите вашу почту</string>
     <string name="input_nickname_please">Введите, пожалуйста, никнейм</string>
+    <string name="marathons">Марафоны</string>
+    <string name="home">Лента</string>
 
 </resources>
