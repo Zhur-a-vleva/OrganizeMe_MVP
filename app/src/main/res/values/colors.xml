@@ -9,7 +9,7 @@
   <color name="black">#000000</color>
   <color name="green">#39D597</color>
 
-  <color name="colorPrimary">@color/blue_light</color>
-  <color name="colorPrimaryDark">@color/blue_light</color>
-  <color name="colorAccent">@color/blue_light</color>
+  <color name="colorPrimary">@color/grey_light</color>
+  <color name="colorPrimaryDark">#E8E6E6</color>
+  <color name="colorAccent">@color/grey_light</color>
 </resources>

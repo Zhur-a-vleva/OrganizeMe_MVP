@@ -88,7 +88,7 @@
 
             <Button
                 android:id="@+id/signInButton"
-                style="@style/buttonStyle"
+                style="@style/ButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/large_layout_margin"

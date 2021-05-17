@@ -15,6 +15,11 @@ class ProfileView : Fragment(R.layout.profile_view) {
     private val viewModel: ProfileViewModel by viewModels()
 
     //TODO(OnBackListener "Do you want to exit?")
+    //TODO(get information from Room)
+    //TODO(add shadow to bottom navigation view)
+    //TODO(set title to topAppBar)
+    //TODO(change from settings icon to subscribe icon)
+    //TODO(set the font and alignment to title)
 
     companion object {
         const val name = "ProfileView"
@@ -47,6 +52,14 @@ class ProfileView : Fragment(R.layout.profile_view) {
                 }
                 else -> false
             }
+        }
+
+        topToolBar.setNavigationOnClickListener {
+            //TODO(handle navigation icon pressed)
+        }
+
+        topToolBar.setOnMenuItemClickListener { icon ->
+            
         }
     }
 }

@@ -28,7 +28,7 @@ class SignInView : Fragment(R.layout.sign_in_view) {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        context?.theme?.applyStyle(R.style.buttonStyle, true)
+        context?.theme?.applyStyle(R.style.ButtonStyle, true)
         navigationController = NavHostFragment.findNavController(this)
 
         var sendEndIconState = true

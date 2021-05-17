@@ -32,5 +32,6 @@
     <string name="input_nickname_please">Введите, пожалуйста, никнейм</string>
     <string name="marathons">Марафоны</string>
     <string name="home">Лента</string>
+    <string name="settings">settings</string>
 
 </resources>
