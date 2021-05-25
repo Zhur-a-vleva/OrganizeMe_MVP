@@ -17,7 +17,7 @@ class Main : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("com.example.organizeme", Context.MODE_PRIVATE)
         val navigationController =
-            supportFragmentManager.findFragmentById(R.id.navigation_fragment)?.findNavController()
+            supportFragmentManager.findFragmentById(R.id.navigationFragment)?.findNavController()
 
         viewModel.firstRun.observe(this, Observer { isFirstRun ->
             if (isFirstRun) {

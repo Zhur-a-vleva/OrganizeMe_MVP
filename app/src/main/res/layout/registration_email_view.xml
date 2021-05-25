@@ -25,6 +25,7 @@
             style="@android:style/TextAppearance.Medium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="left"
             android:layout_marginTop="@dimen/small_layout_margin"
             android:fontFamily="@font/montserrat"
             android:text="@string/first_hello"

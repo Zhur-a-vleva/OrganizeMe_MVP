@@ -51,7 +51,8 @@ class RegistrationNicknameView : Fragment(R.layout.registration_nickname_view) {
         }
 
         nextButton.setOnClickListener {
-            //TODO(navigationController.navigate(R.id.registrationPasswordFragment))
+            data.putString(viewModel.nicknameKey, nicknameInputLayout.editText?.text.toString())
+            navigationController.navigate(R.id.registrationPasswordView, data)
         }
     }
 }

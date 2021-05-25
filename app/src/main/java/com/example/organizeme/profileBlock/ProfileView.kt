@@ -28,7 +28,7 @@ class ProfileView : Fragment(R.layout.profile_view) {
     //TODO(get tasks from server)
     //TODO(set onDoneIconListener)
     //TODO(set onEditTaskIconListener)
-    
+
 
 
     companion object {
@@ -74,7 +74,7 @@ class ProfileView : Fragment(R.layout.profile_view) {
 
          */
 
-        //TODO
+        //TODO(call viewModel)
         //When time is 12 pm we post  today's plan
         val cardView2 = View.inflate(context, R.layout.task, null)
         scrollView.addView(cardView2)

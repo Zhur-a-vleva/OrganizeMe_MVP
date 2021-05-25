@@ -37,5 +37,7 @@
     <string name="subscriptions">подписки</string>
     <string name="doneText">выполнено</string>
     <string name="efficiencyText">эффективность</string>
+    <string name="create_password">Придумайте, пожалуйста, пароль</string>
+    <string name="input_password_please">Введите, пожалуйста, пароль</string>
 
 </resources>

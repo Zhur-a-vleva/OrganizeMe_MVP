@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_registrationNicknameView_to_registrationEmailView"
             app:destination="@id/registrationEmailView" />
+        <action
+            android:id="@+id/action_registrationNicknameView_to_registrationPasswordView"
+            app:destination="@id/registrationPasswordView" />
     </fragment>
     <fragment
         android:id="@+id/registrationEmailView"
@@ -38,6 +41,14 @@
             app:destination="@id/signInView" />
         <action
             android:id="@+id/action_registrationEmailView_to_registrationNicknameView"
+            app:destination="@id/registrationNicknameView" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationPasswordView"
+        android:name="com.example.organizeme.registrationBlock.password.RegistrationPasswordView"
+        android:label="RegistrationPasswordView" >
+        <action
+            android:id="@+id/action_registrationPasswordView_to_registrationNicknameView"
             app:destination="@id/registrationNicknameView" />
     </fragment>
 
