@@ -33,5 +33,9 @@
     <string name="marathons">Марафоны</string>
     <string name="home">Лента</string>
     <string name="settings">settings</string>
+    <string name="subscribers">подписчики</string>
+    <string name="subscriptions">подписки</string>
+    <string name="doneText">выполнено</string>
+    <string name="efficiencyText">эффективность</string>
 
 </resources>

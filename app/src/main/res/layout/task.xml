@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_layout_margin"
+        android:layout_marginTop="@dimen/small_layout_margin"
+        android:layout_marginRight="@dimen/small_layout_margin"
+        android:layout_marginBottom="@dimen/small_layout_margin"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="@dimen/elevation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/pre_medium_layout_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/number"
+                style="@android:style/TextAppearance.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="1"
+                android:textColor="@color/blue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/nameOfTask"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pre_medium_layout_margin"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nameOfTask"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Name of task"
+                    android:textColor="@color/grey_dark"
+                    app:layout_constraintLeft_toRightOf="@id/number"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/descriptionOfTask"
+                    style="@android:style/TextAppearance.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description. Long-long description that must fill two or more lines"
+                    android:textColor="@color/grey_light"
+                    app:layout_constraintTop_toBottomOf="@id/nameOfTask" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/taskStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/small_layout_margin"
+                    android:src="@drawable/done" />
+
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
+        style="@style/Widget.MaterialComponents.AppBarLayout.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.AppBarLayout.Primary"
-        app:liftOnScroll="true"
-        >
+        android:elevation="4dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topToolBar"
@@ -18,14 +18,201 @@
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/send_message"
-            app:titleTextAppearance="@style/TextAppearance"
-            app:title="ghjkl"/>
+            app:title="ghjkl"
+            app:titleTextAppearance="@style/TextAppearance" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/small_layout_margin"
+            android:paddingRight="@dimen/small_layout_margin">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/medium_layout_margin">
+
+                <TextView
+                    android:id="@+id/name"
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_layout_margin"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Name Surname"
+                    android:textColor="@color/blue"
+                    app:layout_constraintBottom_toTopOf="@+id/status"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="130dp"
+
+                    android:layout_height="130dp"
+                    android:layout_marginTop="@dimen/small_layout_margin"
+                    android:layout_marginRight="@dimen/medium_layout_margin"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/status"
+                    style="@android:style/TextAppearance.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_layout_margin"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Status"
+                    android:textColor="@color/grey_light"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
+
+                <LinearLayout
+                    android:id="@+id/subLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_layout_margin"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/status">
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/subscribers"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="141"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/subscribersText"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/medium_layout_margin"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/subscribers"
+                            android:textColor="@color/grey_light" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/subscriptions"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="90"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/subscriptionsText"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/subscriptions"
+                            android:textColor="@color/grey_light" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/small_layout_margin"
+                    android:background="@color/grey_light"
+                    app:layout_constraintTop_toBottomOf="@id/subLayout" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_layout_margin"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/line">
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/done"
+                            style="@android:style/TextAppearance.Large"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="271"
+                            android:textColor="@color/blue" />
+
+                        <TextView
+                            android:id="@+id/doneText"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/doneText"
+                            android:textColor="@color/grey_light" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/efficiency"
+                            style="@android:style/TextAppearance.Large"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:text="98%"
+                            android:textColor="@color/blue" />
+
+                        <TextView
+                            android:id="@+id/efficiencyText"
+                            style="@android:style/TextAppearance.Small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/efficiencyText"
+                            android:textColor="@color/grey_light" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
@@ -34,10 +221,10 @@
         style="@style/BottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:backgroundTint="@color/white"
         app:backgroundTint="@color/white"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_navigation_menu"
-        android:layout_gravity="bottom"/>
+        app:menu="@menu/bottom_navigation_menu" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

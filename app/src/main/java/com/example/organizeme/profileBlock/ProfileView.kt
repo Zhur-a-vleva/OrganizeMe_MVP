@@ -2,6 +2,8 @@ package com.example.organizeme.profileBlock
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
@@ -20,6 +22,14 @@ class ProfileView : Fragment(R.layout.profile_view) {
     //TODO(set title to topAppBar)
     //TODO(change from settings icon to subscribe icon)
     //TODO(set the font and alignment to title)
+    //TODO(get name and surname, photo, status, subscribers and subscriptions)
+    //TODO(set circle image)
+    //TODO(calculate efficiency and done task)
+    //TODO(get tasks from server)
+    //TODO(set onDoneIconListener)
+    //TODO(set onEditTaskIconListener)
+    
+
 
     companion object {
         const val name = "ProfileView"
@@ -58,8 +68,21 @@ class ProfileView : Fragment(R.layout.profile_view) {
             //TODO(handle navigation icon pressed)
         }
 
-        topToolBar.setOnMenuItemClickListener { icon ->
-            
+        /* topToolBar.setOnMenuItemClickListener { icon ->
+
         }
+
+         */
+
+        //TODO
+        //When time is 12 pm we post  today's plan
+        val cardView2 = View.inflate(context, R.layout.task, null)
+        scrollView.addView(cardView2)
+
+        val cardView3 = View.inflate(context, R.layout.task, null)
+        scrollView.addView(cardView3)
+
+        val cardView4 = View.inflate(context, R.layout.task, null)
+        scrollView.addView(cardView4)
     }
 }
