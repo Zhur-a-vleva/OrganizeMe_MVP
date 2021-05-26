@@ -50,6 +50,17 @@
         <action
             android:id="@+id/action_registrationPasswordView_to_registrationNicknameView"
             app:destination="@id/registrationNicknameView" />
+        <action
+            android:id="@+id/action_registrationPasswordView_to_registrationView"
+            app:destination="@id/registrationView" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationView"
+        android:name="com.example.organizeme.registrationBlock.registration.RegistrationView"
+        android:label="RegistrationView" >
+        <action
+            android:id="@+id/action_registrationView_to_registrationPasswordView"
+            app:destination="@id/registrationPasswordView" />
     </fragment>
 
 </navigation>

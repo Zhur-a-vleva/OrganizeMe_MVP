@@ -51,7 +51,8 @@ class RegistrationPasswordView : Fragment(R.layout.registration_password_view) {
         }
 
         nextButton.setOnClickListener {
-            //TODO(navigate to last stage)
+            data.putString(viewModel.passwordKey, passwordInputLayout.editText?.text.toString())
+            navigationController.navigate(R.id.registrationView, data)
         }
     }
 }
