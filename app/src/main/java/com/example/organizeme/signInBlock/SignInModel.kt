@@ -22,10 +22,10 @@ class SignInModel {
     }
      */
 
-    fun checkEmail(email: String): Boolean {
+    fun checkEmailExistence(email: String): Boolean {
         //TODO(чекнуть, существует ли такая почта)
         //Test information
-        if (email.toLowerCase() == "zhur.a.vleva.Darya21@gmail.com") {
+        if (email.toLowerCase() == "zhur.a.vleva.darya21@gmail.com") {
             return true
         }
         return false

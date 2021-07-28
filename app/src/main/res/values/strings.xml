@@ -15,7 +15,7 @@
     <string name="error_title"><u>Ошибка</u></string>
     <string name="email_is_not_registered">Такая почта не зарегистрирована. Повторите попытку еще раз</string>
     <string name="password_is_not_correct">Неверный пароль. Повторите попытку еще раз</string>
-    <string name="email_is_not_correct">Введена некорректная почта</string>
+    <string name="email_or_password_is_not_correct">Почта или пароль неверны</string>
 
     <string name="forgot_password_email">Ваш пароль от аккаунта: </string>
     <string name="send_password">Отправить пароль</string>
@@ -39,5 +39,7 @@
     <string name="efficiencyText">эффективность</string>
     <string name="create_password">Придумайте, пожалуйста, пароль</string>
     <string name="input_password_please">Введите, пожалуйста, пароль</string>
+    <string name="email_is_not_exist">Почта не зарегистрирована</string>
+    <string name="try_again">Попробовать еще раз</string>
 
 </resources>

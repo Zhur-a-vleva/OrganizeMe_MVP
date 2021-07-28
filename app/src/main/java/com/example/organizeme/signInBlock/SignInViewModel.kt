@@ -8,42 +8,28 @@ import androidx.lifecycle.ViewModel
 import com.example.organizeme.R
 
 
-class SignInViewModel() : ViewModel() {
+class SignInViewModel : ViewModel() {
 
     private val repository = SignInModel()
 
-    val endIconIsActive: MutableLiveData<Boolean> = MutableLiveData()
-    val emailError: MutableLiveData<String?> = MutableLiveData()
-    val dialogEmailError: MutableLiveData<String?> = MutableLiveData()
+    val signInError: MutableLiveData<String?> = MutableLiveData()
 
-    fun changeEndIconState(state: Boolean) {
-        endIconIsActive.value = state
-    }
-
-    fun changeEmailError(context: Context?, email: String) {
+    fun changeSignInError(context: Context?, email: String, password: String) {
         when {
             email == "" -> {
-                emailError.value = context?.getString(R.string.input_email_please)
+                signInError.value = context?.getString(R.string.input_email_please)
             }
-            !isEmailValid(email) -> {
-                emailError.value = context?.getString(R.string.email_is_not_correct)
+            password == "" -> {
+                signInError.value = context?.getString(R.string.input_password_please)
             }
-            else -> {
-                emailError.value = null
+            !isEmailValid(email) || !isPasswordRight(email, password) -> {
+                signInError.value = context?.getString(R.string.email_or_password_is_not_correct)
             }
-        }
-    }
-
-    fun changeDialogEmailError(context: Context?, email: String) {
-        when {
-            email == "" -> {
-                dialogEmailError.value = context?.getString(R.string.input_email_please)
-            }
-            !isEmailValid(email) -> {
-                dialogEmailError.value = context?.getString(R.string.email_is_not_correct)
+            !isEmailExist(email) -> {
+                signInError.value = context?.getString(R.string.email_is_not_exist)
             }
             else -> {
-                dialogEmailError.value = null
+                signInError.value = null
             }
         }
     }
@@ -57,4 +43,14 @@ class SignInViewModel() : ViewModel() {
             .matches()
     }
 
+    private fun isEmailExist(email: String): Boolean {
+        return repository.checkEmailExistence(email)
+    }
+
+    private fun isPasswordRight(email: String, password: String): Boolean {
+        if (repository.getPassword(email) == password) {
+            return true
+        }
+        return false
+    }
 }

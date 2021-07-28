@@ -33,7 +33,7 @@ class RegistrationEmailViewModel : ViewModel() {
                 error.value = context?.getString(R.string.email_is_exist)
             }
             !isEmailValid(email) -> {
-                error.value = context?.getString(R.string.email_is_not_correct)
+                error.value = context?.getString(R.string.email_or_password_is_not_correct)
             }
             else -> {
                 error.value = null

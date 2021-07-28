@@ -32,10 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_layout_margin"
                 android:textColorHint="@color/grey_light"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@drawable/error"
-                app:errorIconTint="@color/red"
-                app:errorTextColor="@color/red"
                 app:hintTextColor="@color/blue">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -56,13 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/small_layout_margin"
                 android:textColorHint="@color/grey_light"
-                app:endIconDrawable="@drawable/eye"
-                app:endIconMode="password_toggle"
-                app:endIconTint="@color/grey_light"
-                app:errorEnabled="true"
-                app:errorIconDrawable="@drawable/error"
-                app:errorIconTint="@color/red"
-                app:errorTextColor="@color/red"
                 app:hintTextColor="@color/blue">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -75,16 +64,6 @@
                     android:inputType="textPassword" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/forgotPassword"
-                style="@android:style/TextAppearance.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/forgot_password"
-                android:textColor="@color/blue" />
 
             <Button
                 android:id="@+id/signInButton"
@@ -104,6 +83,15 @@
                 android:fontFamily="@font/montserrat"
                 android:text="@string/sign_up"
                 android:textColor="@color/blue" />
+
+            <TextView
+            android:id="@+id/forgotPassword"
+            style="@android:style/TextAppearance.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/forgot_password"
+            android:textColor="@color/blue" />
 
 
         </LinearLayout>

@@ -1,11 +1,14 @@
 package com.example.organizeme.signInBlock
 
 import android.app.AlertDialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import androidx.core.widget.addTextChangedListener
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -18,10 +21,9 @@ import kotlinx.android.synthetic.main.sign_in_view.*
 
 class SignInView : Fragment(R.layout.sign_in_view) {
 
-    //TODO: fix email checking (Button pressed -> email checking, error displaying)
-
     private val viewModel: SignInViewModel by viewModels()
     private lateinit var navigationController: NavController
+    private var errorState = false
 
     companion object {
         const val name = "SignInView"
@@ -31,61 +33,69 @@ class SignInView : Fragment(R.layout.sign_in_view) {
         context?.theme?.applyStyle(R.style.ButtonStyle, true)
         navigationController = NavHostFragment.findNavController(this)
 
-        var sendEndIconState = true
-
-        viewModel.emailError.observe(viewLifecycleOwner, Observer { emailError ->
-            emailInputLayout.error = emailError
-        })
-        viewModel.endIconIsActive.observe(viewLifecycleOwner, Observer { state ->
-            if (state) {
-                passwordInputLayout.setEndIconDrawable(R.drawable.eye)
-                passwordInputLayout.editText?.transformationMethod = PasswordTransformationMethod()
-                sendEndIconState = false
+        viewModel.signInError.observe(viewLifecycleOwner, Observer { signInError ->
+            if (signInError == null) {
+                errorState = false
             } else {
-                passwordInputLayout.setEndIconDrawable(R.drawable.crossed_out_eye)
-                passwordInputLayout.editText?.transformationMethod = null
-                sendEndIconState = true
+                errorState = true
+                val dialog = AlertDialog.Builder(context).create()
+                val dialogView = layoutInflater.inflate(R.layout.sign_in_error, null)
+                dialog.setView(dialogView)
+                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                dialog.setCanceledOnTouchOutside(false)
+                dialog.setCancelable(false)
+
+                val errorText: TextView = dialogView.findViewById(R.id.error)
+                val tryAgain: TextView = dialogView.findViewById(R.id.tryAgain)
+
+                errorText.text = signInError
+
+                tryAgain.setOnClickListener {
+                    dialog.cancel()
+                }
+
+                dialog.show()
             }
         })
-
-        emailInputLayout.editText?.addTextChangedListener { email ->
-            viewModel.changeEmailError(context, email.toString())
-        }
-
-        passwordInputLayout.setEndIconOnClickListener {
-            viewModel.changeEndIconState(sendEndIconState)
-        }
 
         forgotPassword.setOnClickListener {
             val dialog = AlertDialog.Builder(context).create()
 
             val dialogView = layoutInflater.inflate(R.layout.forgot_password, null)
             dialog.setView(dialogView)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setCanceledOnTouchOutside(false)
+            dialog.setCancelable(false)
 
             val emailInputDialogLayout: TextInputLayout =
                 dialogView.findViewById(R.id.emailInputDialogLayout)
             val sendPassword: Button = dialogView.findViewById(R.id.sendPassword)
 
-            viewModel.dialogEmailError.observe(viewLifecycleOwner, Observer { error ->
-                emailInputDialogLayout.error = error
-            })
-
-            emailInputDialogLayout.editText?.addTextChangedListener { email ->
-                viewModel.changeDialogEmailError(context, email.toString())
-            }
 
             sendPassword.setOnClickListener {
-                if (emailInputDialogLayout.error == null) {
+                if (emailInputDialogLayout.editText?.text.toString() != "") {
                     viewModel.onForgotPasswordClicked(emailInputDialogLayout.editText?.text.toString())
-                    dialog.cancel()
                 }
+                dialog.cancel()
             }
 
             dialog.show()
         }
 
         signInButton.setOnClickListener {
-            if (emailInputLayout.error == null && passwordInputLayout.error == null) {
+            val imm: InputMethodManager =
+                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(
+                signInButton.windowToken,
+                InputMethodManager.HIDE_NOT_ALWAYS
+            )
+
+            viewModel.changeSignInError(
+                context,
+                emailInputLayout.editText?.text.toString(),
+                passwordInputLayout.editText?.text.toString()
+            )
+            if (!errorState) {
                 navigationController.navigate(R.id.profileView)
             }
         }
