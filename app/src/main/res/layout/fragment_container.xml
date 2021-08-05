@@ -7,14 +7,6 @@
     android:layout_height="match_parent"
     tools:context="Main">
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/blue"
-        android:visibility="invisible" />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navigationFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

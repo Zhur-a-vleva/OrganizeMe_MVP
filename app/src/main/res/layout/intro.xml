@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/registrationPersonalInfo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/large_layout_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/registrationPersonalInfo"
+        app:layout_constraintLeft_toLeftOf="@id/registrationPersonalInfo"
+        app:layout_constraintRight_toRightOf="@id/registrationPersonalInfo"
+        app:layout_constraintTop_toTopOf="@id/registrationPersonalInfo">
+
+        <ImageView
+            android:id="@+id/registration_email_view_app_name_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/organize_me"
+            android:layout_marginBottom="@dimen/large_layout_margin"/>
+
+        <TextView
+            style="@android:style/TextAppearance.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/small_layout_margin"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/first_hello"
+            android:textColor="@color/grey_dark" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/registrationPersonalInfo"
+        app:layout_constraintRight_toRightOf="@id/registrationPersonalInfo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

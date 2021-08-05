@@ -33,22 +33,6 @@
 
     </style>
 
-    <style name="BottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemRippleColor">@color/grey_dark</item>
-        <item name="iconSize">30dp</item>
-        <item name="materialThemeOverlay">@style/ThemeOverlay.BottomNavigation</item>
-    </style>
-
-    <style name="ThemeOverlay.BottomNavigation" parent="">
-        <item name="colorPrimary">@color/blue</item>
-    </style>
-
-    <style name="TopToolBar" parent="Widget.MaterialComponents.Toolbar.Primary">
-        <item name="android:titleTextAppearance">@style/TextAppearance</item>
-        <item name="android:backgroundTint">@color/white</item>
-        <item name="titleTextColor">@color/black</item>
-    </style>
-
     <style name="TextAppearance" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/montserrat</item>
         <item name="android:fontFamily">@font/montserrat</item>

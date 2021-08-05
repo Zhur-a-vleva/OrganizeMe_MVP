@@ -21,9 +21,9 @@ class Main : AppCompatActivity() {
 
         viewModel.firstRun.observe(this, Observer { isFirstRun ->
             if (isFirstRun) {
-                navigationController?.navigate(R.id.registrationEmailView)
+                navigationController?.navigate(R.id.introView)
             } else {
-                navigationController?.navigate(R.id.signInView)
+                navigationController?.navigate(R.id.calendarView)
             }
         })
         viewModel.navigate(sharedPreferences)
