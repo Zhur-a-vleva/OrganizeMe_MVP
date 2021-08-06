@@ -1,4 +1,4 @@
-package com.example.organizeme.registrationBlock.email
+package com.example.organizeme
 
 import android.os.Bundle
 import android.view.View

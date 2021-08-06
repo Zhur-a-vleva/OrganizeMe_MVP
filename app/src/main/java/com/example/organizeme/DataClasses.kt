@@ -1,6 +1,7 @@
 package com.example.organizeme
 
 import android.media.Image
+import android.widget.ImageView
 import java.sql.Time
 
 data class Task(
@@ -9,6 +10,6 @@ data class Task(
     val importance: Boolean,
     val urgent: Boolean,
     val routine: Int,
-    val deadline: Time,
-    val status: Boolean
+    val deadline: String,
+    val status: ImageView
 )

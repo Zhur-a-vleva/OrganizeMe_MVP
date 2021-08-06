@@ -5,7 +5,7 @@
     app:startDestination="@id/introView">
     <fragment
         android:id="@+id/introView"
-        android:name="com.example.organizeme.registrationBlock.email.IntroView"
+        android:name="com.example.organizeme.IntroView"
         android:label="IntroView" >
         <action
             android:id="@+id/action_introView_to_calendarView"

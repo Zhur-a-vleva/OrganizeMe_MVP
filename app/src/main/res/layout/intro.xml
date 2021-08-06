@@ -39,7 +39,7 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/arrow_right"
+        android:src="@drawable/forward"
         app:layout_constraintBottom_toBottomOf="@id/registrationPersonalInfo"
         app:layout_constraintRight_toRightOf="@id/registrationPersonalInfo" />
 

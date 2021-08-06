@@ -20,18 +20,6 @@
             android:layout_margin="@dimen/pre_medium_layout_margin"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/number"
-                style="@android:style/TextAppearance.Medium"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="1"
-                android:textColor="@color/blue"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/nameOfTask"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,22 +27,40 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/nameOfTask"
-                    style="@android:style/TextAppearance.Medium"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Name of task"
-                    android:textColor="@color/grey_dark"
-                    app:layout_constraintLeft_toRightOf="@id/number"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/nameOfTask"
+                        style="@android:style/TextAppearance.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Name of task"
+                        android:textColor="@color/grey_dark"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/deadline"
+                        style="@style/TextAppearance.AppCompat.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/small_layout_margin"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="22.08.2021 17:00"
+                        android:textColor="@color/blue" />
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/descriptionOfTask"
                     style="@android:style/TextAppearance.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
                     android:text="Description. Long-long description that must fill two or more lines"
                     android:textColor="@color/grey_light"
                     app:layout_constraintTop_toBottomOf="@id/nameOfTask" />
@@ -71,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/small_layout_margin"
-                    android:src="@drawable/done" />
+                    android:src="@drawable/complete" />
 
                 <ImageView
                     android:id="@+id/edit"
